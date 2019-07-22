@@ -27,7 +27,7 @@
             <nav>
                 <a href="../">Home</a>
                 <a href="../about.html">About</a>
-                <a href="../contact.html">Contact</a>
+                <a href="../blogroll.html">Blogroll</a>
                 <a href="../archive.html">Archive</a>
             </nav>
         </header>
@@ -66,7 +66,7 @@
 <a class="sourceLine" id="cb2-3" title="3">(... snipped... )</a></code></pre></div>
 <p>然後<code>stack exec site watch</code>，再去<code>127.0.0.1</code>看，應該就可以在瀏覽器的tab列看到你 的小圖示了。</p>
 <h3 id="disqus">Disqus</h3>
-<p>雖說好像有人講說根本就不需要有讓人留言的功能，不過我覺得有的話還是炫一點… 我只 看過別人用<a href="https://disqus.com/">Disqus</a>，又懶得去survey有沒有其他的東西可以用， 所以就決定用Disqus了。 Disqus的設定相對簡單一點，照著官網的說明操作即可。比較有 點煩的是Disqus一定要註冊才能用，就… 不在意的話可以用，我個人的話如果以後有空 閒的話是會想換個留言外掛來用就是了。照著官方說明做完之後， <code>templates/default.html</code>裡面應該會有一個<code>&lt;comments&gt;</code>部分，可以自己在 <code>css/default.css</code>裡面調整一下，然後以後發文的時候記得markdown的metadata裡面記得 要加<code>comments: true</code>。</p>
+<p>雖說好像有人講說根本就不需要有讓人留言的功能，不過我覺得有的話還是炫一點… 我只 看過別人用<a href="https://disqus.com/">Disqus</a>，又懶得去survey有沒有其他的東西可以用， 所以就決定用Disqus了。 Disqus的設定相對簡單一點，照著官網的說明操作即可。比較有 點煩的是Disqus一定要註冊才能用，就… 不在意的話可以用，我個人的話如果以後有空 閒的話是會想換個留言外掛來用就是了。照著官方說明做完之後， <code>templates/default.html</code>裡面應該會有一個<code>&lt;comments&gt;</code>部分，可以自己在 <code>css/default.css</code>裡面調整一下，然後以後發文的時候markdown的metadata裡面記得要加 <code>comments: true</code>。</p>
 <h3 id="tags">Tags</h3>
 <p>這個我搞得比較久，結果後來發現是低級錯誤… 基本上照著這篇做就可以了：<a href="https://javran.github.io/posts/2014-03-01-add-tags-to-your-hakyll-blog.html">Add tags to your Hakyll blog</a> ，但是做完之後 <strong>千萬記得要<code>stack build</code></strong> ，重新編過一次<code>site.hs</code>，才會觀察到 <code>_site/tags/</code>裡面有東西出現。</p>
 <h3 id="rss-atom-feed">RSS / Atom Feed</h3>
