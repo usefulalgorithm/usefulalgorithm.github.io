@@ -30,8 +30,32 @@
 <h2 id="how">How?</h2>
 <p>其實Hakyll作者自己寫的<a href="https://jaspervdj.be/hakyll/tutorials.html">教學文檔</a>就已 經很清楚了，我單純紀錄一下我是怎麼做的… 我的程式碼放在這裡： <a href="https://github.com/usefulalgorithm/personal-website" class="uri">https://github.com/usefulalgorithm/personal-website</a></p>
 <p>這個網站是直接host在Github Page上面，因為我懶得找別的免費的website hosting service了… Github Page的使用方法應該蠻簡單的，直接去他們的<a href="https://pages.github.com/">官方網站</a>，照著步驟做就可以了。如果不想的話， <a href="https://surge.sh/">Surge</a>貌似免費用戶就有自訂網址，但我沒用過。</p>
-<p>其他的deployment我其實也就照著官方說明做，稍微有微調了一下HTML排版、字型跟 CSS的 一些屬性。</p>
-<p>比較可以講的是我有加了Disqus跟標籤功能，標籤功能要用需要去改<code>site.hs</code>，改完之後 還要記得重新用<code>stack build</code>重新編過一次。我就是忘記需要重新編過，卡超久…</p>
+<p>接下來講一下基本的操作：</p>
+<h3 id="basics">Basics</h3>
+<p>其實直接從Hakyll官方拉下來就可以直接透過<code>stack</code>來把所有東西建起來了。應該可以透 過<a href="https://getbootstrap.com/">bootstrap</a>之類的東西來調HTML跟CSS相關的所有東西， 但我看文檔有點多就懶得讀了…</p>
+<p>另外要佈署到Github的話，因為Github Page不會自行替我們輸出Hakyll builds，所以必須 要做一些額外的步驟。網上似乎有大大有做些全自動化的CI的介紹，但因為我佈署的時候 沒看到那篇文，所以基本上是照著自己覺得怎樣好用就怎麼做了。Hakyll編好的HTML檔會放 在<code>_site/</code>資料夾裡面，而這些HTML檔就是實際上拿來佈署的網頁。我做的就是直接在 <code>_site/</code>裡面新開一個Git repository：</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1">$ <span class="fu">git</span> clone https://github.com/username/username.github.io _site</a></code></pre></div>
+<p>然後因為在做<code>stack exec site build</code>的時候生 出來的檔會自己長在<code>_site</code>裡面，所以 它裏頭的Git repository也跟著被修改。如果我們 透過瀏覽器看過一遍，覺得沒有問題的 話，就可以直接去針對<code>_site/</code>裡面的檔案去做<code>git add; git commit -m &lt;Your commit message&gt;; git push</code>，然後再去你的Github Page頁面網址看 看你丟上去的東西。</p>
+<h3 id="favicon">Favicon</h3>
+<p>有沒有看到我的網頁的小圖示是個妙蛙種子？梗是來自這裡：<a href="http://www.rhizomes.net/issue5/poke/bulbasaur.html">Interview with Bulbasaur</a>。這個應該是最簡單 的，只要自己生一個<code>.ico</code>檔出來，丟在一個你覺得適合的地方就可以了。我自己的話是放 在<code>image/</code>裡面，但其實放哪真的都沒差… 好了之後，在<code>template/default.html</code>的 <code>head</code>裡面塞進這行:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb2-1" title="1">(... snipped... )</a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="kw">&lt;link</span><span class="ot"> rel=</span><span class="st">&quot;icon&quot;</span><span class="ot"> href=</span><span class="st">&quot;/images/favicon.ico&quot;</span><span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb2-3" title="3">(... snipped... )</a></code></pre></div>
+<p>然後<code>stack exec site watch</code>，再去<code>127.0.0.1</code>看，應該就可以在瀏覽器的tab列看到你 的小圖示了。</p>
+<h3 id="disqus">Disqus</h3>
+<p>雖說好像有人講說根本就不需要有讓人留言的功能，不過我覺得有的話還是炫一點… 我只 看過別人用<a href="https://disqus.com/">Disqus</a>，又懶得去survey有沒有其他的東西可以用， 所以就決定用Disqus了。 Disqus的設定相對簡單一點，照著官網的說明操作即可。比較有 點煩的是Disqus一定要註冊才能用，就… 不在意的話可以用，我個人的話如果以後有空 閒的話是會想換個留言外掛來用就是了。照著官方說明做完之後， <code>templates/default.html</code>裡面應該會有一個<code>&lt;comments&gt;</code>部分，可以自己在 <code>css/default.css</code>裡面調整一下，然後以後發文的時候記得markdown的metadata裡面記得 要加<code>comments: true</code>。</p>
+<h3 id="tags">Tags</h3>
+<p>這個我搞得比較久，結果後來發現是低級錯誤… 基本上照著這篇做就可以了：<a href="https://javran.github.io/posts/2014-03-01-add-tags-to-your-hakyll-blog.html">Add tags to your Hakyll blog</a> ，但是做完之後 <strong>千萬記得要<code>stack build</code></strong> ，重新編過一次<code>site.hs</code>，才會觀察到 <code>_site/tags/</code>裡面有東西出現。</p>
+<h3 id="rss-atom-feed">RSS / Atom Feed</h3>
+<p>這個也一樣照著官網做就好了。那因為我覺得RSS訂閱那個按鈕很好看，不想要有個文字連 結來做這件事情，所以花比較多時間的反而是在搞RSS訂閱的按鈕。搞好之後想說乾脆連社 群媒體的那些連結也都做成一樣的形式，就不用再另外多一個Contact的頁面了。我是用 <a href="https://fontawesome.com/">Font Awesome</a>來找那些圖片，應該一樣照著官網上面寫的作 法做就可以了，但是它也得要註冊… 另外Font Awesome貌似是可以下載下來直接放在 <code>css/</code>裡面，或是也可以直接用網路上的資源庫來用。網路上的Kit貌似載入速度似乎不是 太好，圖片要稍微等一等才會正確地出現，我覺得用起來實在是有點不爽… 所以就直接在 <code>templates/default.html</code>的<code>&lt;head&gt;</code>裡面加了一段自己去load的腳本，然後用不那麼新的 FA庫，載入速度就快了一些。我用原本的Kit時在沒有快取時的速度大概是改用腳本時的五 倍吧…就一簡單的部落格要載個十幾秒，實在是沒必要。</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">&lt;script</span><span class="ot"> type=</span><span class="st">&quot;text/javascript&quot;</span><span class="kw">&gt;</span> (<span class="kw">function</span>() <span class="op">{</span> <span class="kw">var</span> css <span class="op">=</span></a>
+<a class="sourceLine" id="cb3-2" title="2">  <span class="va">document</span>.<span class="at">createElement</span>(<span class="st">&#39;link&#39;</span>)<span class="op">;</span> <span class="va">css</span>.<span class="at">href</span> <span class="op">=</span></a>
+<a class="sourceLine" id="cb3-3" title="3">    <span class="st">&#39;https://use.fontawesome.com/releases/v5.1.0/css/all.css&#39;</span><span class="op">;</span> <span class="va">css</span>.<span class="at">rel</span> <span class="op">=</span></a>
+<a class="sourceLine" id="cb3-4" title="4">    <span class="st">&#39;stylesheet&#39;</span><span class="op">;</span> <span class="va">css</span>.<span class="at">type</span> <span class="op">=</span> <span class="st">&#39;text/css&#39;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb3-5" title="5">  <span class="va">document</span>.<span class="at">getElementsByTagName</span>(<span class="st">&#39;head&#39;</span>)[<span class="dv">0</span>].<span class="at">appendChild</span>(css)<span class="op">;</span> <span class="op">}</span>)()<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-6" title="6"><span class="kw">&lt;/script&gt;</span></a></code></pre></div>
+<h2 id="thats-all">That’s all!</h2>
+<p>大概是這樣了，其實很多都是照著別人的東西上的說明做的，沒啥特別了不起的地方…</p>
     </section>
 </article>
 ]]></description>
