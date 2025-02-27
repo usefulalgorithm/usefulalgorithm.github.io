@@ -1,0 +1,40 @@
+name: Create New Post PR
+description: Creates a new PR. The PR's body will be used to populate a new post in my blog.
+
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        type: string
+        required: true
+        description: Name of the branch to create. It will be lowercased and all spaces will be replaced by dashes.
+
+jobs:
+  create-branch-and-pr:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Create new branch
+        id: create_branch
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          branch_name=$(echo "${{ github.event.inputs.name }}" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
+          echo "Branch name: ${branch_name}"
+          git checkout -b "$branch_name"
+          git push origin "$branch_name"
+          echo "branch_name=$branch_name" >> $GITHUB_OUTPUT
+
+      - name: Create Pull Request
+        id: create_pr
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ steps.create_branch.outputs.branch_name }}
+          base: main
+          title: posts/${{ steps.create_branch.outputs.branch_name }}
+          body-path: '${{ github.workspace }}/.github/PULL_REQUEST_TEMPLATE/post.md'
+          labels: 'post'

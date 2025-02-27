@@ -1,11 +1,12 @@
-name: Create Post from PR
+name: Generate post from PR
+description: When a PR that has label `post` is merged, this action will generate a new post from the PR's body.
 
 on:
   pull_request:
     types: [labeled, closed]
 
 jobs:
-  create_post:
+  generate_post:
     if: ${{ (github.event.pull_request.merged == true && github.event.label.name == 'post') }}
     runs-on: ubuntu-latest
 
@@ -16,7 +17,8 @@ jobs:
       - name: Create post file
         id: create_post
         run: |
-          PR_TITLE=$(echo "${{ github.event.pull_request.title }}" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
+          PR_TITLE=${{ github.event.pull_request.title }}
+          PR_TITLE=${PR_TITLE#post/}
           DATE=$(date +'%Y-%m-%d')
           PR_TITLE="${DATE}-${PR_TITLE}"
           PR_BODY=${{ github.event.pull_request.body }}
