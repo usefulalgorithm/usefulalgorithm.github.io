@@ -7,7 +7,7 @@ on:
 
 jobs:
   generate_post:
-    if: ${{ (github.event.pull_request.merged == true && github.event.label.name == 'post') }}
+    if: ${{ github.event.label.name == 'post' }}
     runs-on: ubuntu-latest
 
     steps:
