@@ -20,12 +20,13 @@ jobs:
       - name: Make draft item and get branch name
         id: get_name
         run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
           branch_name=$(echo "${{ github.event.inputs.name }}" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
 
           # Create an item in drafts directory
           touch drafts/${branch_name}
-          git add drafts
-          git commit -m "create PR from branch ${branch_name}"
 
           echo "branch_name=$branch_name" >> $GITHUB_OUTPUT
 
