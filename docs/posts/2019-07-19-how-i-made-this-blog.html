@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta property="og:image" content="/images/plane-of-immanence.png">
+        <title>Blog without Organs - How I Got This Blog Rolling (aka Hakyll For Dummies)</title>
+        <link rel="stylesheet" href="../css/default.css" />
+        <link rel="stylesheet" href="../css/syntax.css" />
+        <link rel="icon" href="../images/favicon.ico" />
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro|Roboto+Mono:300|Noto+Sans+TC:300&display=swap" rel="stylesheet"> 
+        <!-- <script src="https://kit.fontawesome.com/5b5c2f44f2.js"></script> -->
+        <script type="text/javascript"> (function() { var css =
+          document.createElement('link'); css.href =
+            'https://use.fontawesome.com/releases/v5.1.0/css/all.css'; css.rel =
+            'stylesheet'; css.type = 'text/css';
+          document.getElementsByTagName('head')[0].appendChild(css); })();
+        </script>
+       
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <a href="../">Blog without Organs</a>
+            </div>
+            <nav>
+                <a href="../">Home</a>
+                <a href="../about.html">About</a>
+                <a href="../blogroll.html">Blogroll</a>
+                <a href="../archive.html">Archive</a>
+            </nav>
+        </header>
+
+        <main role="main">
+            <h1>How I Got This Blog Rolling (aka Hakyll For Dummies)</h1>
+            <article>
+    <section class="header">
+        Posted on July 19, 2019
+        
+        <br>
+        
+        Tags: <a title="All pages tagged 'hakyll'." href="../tags/hakyll.html" rel="tag">hakyll</a>, <a title="All pages tagged 'haskell'." href="../tags/haskell.html" rel="tag">haskell</a>
+        
+    </section>
+    <section>
+        <figure>
+<img src="https://i.warosu.org/data/g/img/0647/55/1518802013131.jpg" alt="One day I’ll start a company where all programmers have to code in Brainfuck…" />
+<figcaption aria-hidden="true">One day I’ll start a company where all programmers have to code in Brainfuck…</figcaption>
+</figure>
+<h2 id="why-hakyll">Why Hakyll?</h2>
+<p>一直以來都蠻想學一下<a href="https://www.haskell.org/">Haskell</a>，但又太懶沒真的認真學過或是拿來做什麼正事… 最近事情沒那麼多，想說重新來摸一下，但光是看<a href="http://cnhaskell.com/">Real World
+Haskell</a>或是<a href="http://learnyouahaskell.com/">Learn You a Haskell for Great
+Good</a>來學好像又有點沒啥實感的樣子，就想說不如挑簡單一點的事情來做。然後我一直都想學下怎樣自己架個部落格，所以…</p>
+<p>一開始是打算拿另一個也是用Haskell實作的網路框架<a href="https://www.yesodweb.com/">Yesod</a>來刻一個，但是摸了一陣覺得Yesod對於Haskell語言熟悉度的門檻還是稍微高一些，於是就拿Hakyll來用了。Hakyll基本上跟Jekyll的原理差不多，只要寫寫markdown文檔，下幾個指令，丟給伺服器就差不多了。很久以前有嘗試用過Jekyll，但是那時候比較嫩一點，又不是很想認真搞懂元件跟功能之間的關係，就沒有繼續碰了。目前個人使用Hakyll的感覺是所有的邏輯都可以整合在一個地方，印象中Jekyll還有一些需要自己去調整的東西，比起來Hakyll的整體使用經驗對我來說順蠻多的。當然有那種根本不用開命令列就可以架Jekyll的作法，但我的重點就是要自己做啊… 所以不考慮。至於在實際操作上，Haskell的code其實一旦習慣了就還蠻好懂的，整個程式的邏輯很清楚，要加什麼特別神奇的功能我想應該也是有辦法做到的。社群裡面大師也很多，基本上有什麼不會的Google一下都可以找到解答。</p>
+<h2 id="how">How?</h2>
+<p>其實Hakyll作者自己寫的<a href="https://jaspervdj.be/hakyll/tutorials.html">教學文檔</a>就已經很清楚了，我單純紀錄一下我是怎麼做的… 我的程式碼放在這裡：<a href="https://github.com/usefulalgorithm/personal-website">https://github.com/usefulalgorithm/personal-website</a></p>
+<p>這個網站是直接host在Github Page上面，因為我懶得找別的免費的website hosting
+service了… Github Page的使用方法應該蠻簡單的，直接去他們的<a href="https://pages.github.com/">官方網站</a>，照著步驟做就可以了。如果不想的話，<a href="https://surge.sh/">Surge</a>貌似免費用戶就有自訂網址，但我沒用過。</p>
+<p>接下來講一下基本的操作：</p>
+<h3 id="basics">Basics</h3>
+<p>其實直接從Hakyll官方拉下來就可以直接透過<code>stack</code>來把所有東西建起來了。應該可以透過<a href="https://getbootstrap.com/">bootstrap</a>之類的東西來調HTML跟CSS相關的所有東西，但我看文檔有點多就懶得讀了…</p>
+<p>另外要佈署到Github的話，因為Github Page不會自行替我們輸出Hakyll builds，所以必須要做一些額外的步驟。網上似乎有大大有做些全自動化的CI的介紹，但因為我佈署的時候沒看到那篇文，所以基本上是照著自己覺得怎樣好用就怎麼做了。Hakyll編好的HTML檔會放在<code>_site/</code>資料夾裡面，而這些HTML檔就是實際上拿來佈署的網頁。我做的就是直接在<code>_site/</code>裡面新開一個Git repository：</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git clone https://github.com/username/username.github.io _site</span></code></pre></div>
+<p>然後因為在做<code>stack exec site build</code>的時候生出來的檔會自己長在<code>_site</code>裡面，所以它裏頭的Git repository也跟著被修改。如果我們透過瀏覽器看過一遍，覺得沒有問題的話，就可以直接去針對<code>_site/</code>裡面的檔案去做<code>git add; git commit -m &lt;Your commit message&gt;; git push</code>，然後再去你的Github Page頁面網址看 看你丟上去的東西。</p>
+<h3 id="favicon">Favicon</h3>
+<p>有沒有看到我的網頁的小圖示是個妙蛙種子？梗是來自這裡：<a href="http://www.rhizomes.net/issue5/poke/bulbasaur.html">Interview with Bulbasaur</a>。這個應該是最簡單的，只要自己生一個<code>.ico</code>檔出來，丟在一個你覺得適合的地方就可以了。我自己的話是放在<code>image/</code>裡面，但其實放哪真的都沒差… 好了之後，在<code>template/default.html</code>的<code>head</code>裡面塞進這行:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(... snipped... )</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">link</span> <span class="er">rel</span><span class="ot">=</span><span class="st">&quot;icon&quot;</span> <span class="er">href</span><span class="ot">=</span><span class="st">&quot;/images/favicon.ico&quot;</span><span class="dt">/&gt;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>(... snipped... )</span></code></pre></div>
+<p>然後<code>stack exec site watch</code>，再去<code>127.0.0.1</code>看，應該就可以在瀏覽器的tab列看到你的小圖示了。</p>
+<h3 id="disqus">Disqus</h3>
+<p>雖說好像有人講說根本就不需要有讓人留言的功能，不過我覺得有的話還是炫一點… 我只看過別人用<a href="https://disqus.com/">Disqus</a>，又懶得去survey有沒有其他的東西可以用，所以就決定用Disqus了。 Disqus的設定相對簡單一點，照著官網的說明操作即可。比較有點煩的是Disqus一定要註冊才能用，就… 不在意的話可以用，我個人的話如果以後有空閒的話是會想換個留言外掛來用就是了。照著官方說明做完之後，<code>templates/default.html</code>裡面應該會有一個<code>&lt;comments&gt;</code>部分，可以自己在<code>css/default.css</code>裡面調整一下，然後以後發文的時候markdown的metadata裡面記得要加<code>comments: true</code>。</p>
+<h3 id="tags">Tags</h3>
+<p>這個我搞得比較久，結果後來發現是低級錯誤… 基本上照著這篇做就可以了：<a href="https://javran.github.io/posts/2014-03-01-add-tags-to-your-hakyll-blog.html">Add tags to your Hakyll blog</a>，但是做完之後 <strong>千萬記得要<code>stack build</code></strong> ，重新編過一次<code>site.hs</code>，才會觀察到<code>_site/tags/</code>裡面有東西出現。</p>
+<h3 id="rss-atom-feed">RSS / Atom Feed</h3>
+<p>這個也一樣照著官網做就好了。那因為我覺得RSS訂閱那個按鈕很好看，不想要有個文字連結來做這件事情，所以花比較多時間的反而是在搞RSS訂閱的按鈕。搞好之後想說乾脆連社群媒體的那些連結也都做成一樣的形式，就不用再另外多一個Contact的頁面了。我是用<a href="https://fontawesome.com/">Font Awesome</a>來找那些圖片，應該一樣照著官網上面寫的作法做就可以了，但是它也得要註冊… 另外Font Awesome貌似是可以下載下來直接放在<code>css/</code>裡面，或是也可以直接用網路上的資源庫來用。網路上的Kit貌似載入速度似乎不是太好，圖片要稍微等一等才會正確地出現，我覺得用起來實在是有點不… 所以就直接在<code>templates/default.html</code>的<code>&lt;head&gt;</code>裡面加了一段自己去load的腳本，然後用不那麼新的FA庫，載入速度就快了一些。我用原本的Kit時在沒有快取時的速度大概是改用腳本時的五倍吧…就一簡單的部落格要載個十幾秒，實在是沒必要。</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">script</span><span class="ot"> type=</span><span class="st">&quot;text/javascript&quot;</span><span class="dt">&gt;</span> (<span class="kw">function</span>() { <span class="kw">var</span> css <span class="op">=</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">document</span><span class="op">.</span><span class="fu">createElement</span>(<span class="st">'link'</span>)<span class="op">;</span> css<span class="op">.</span><span class="at">href</span> <span class="op">=</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'https://use.fontawesome.com/releases/v5.1.0/css/all.css'</span><span class="op">;</span> css<span class="op">.</span><span class="at">rel</span> <span class="op">=</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'stylesheet'</span><span class="op">;</span> css<span class="op">.</span><span class="at">type</span> <span class="op">=</span> <span class="st">'text/css'</span><span class="op">;</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="bu">document</span><span class="op">.</span><span class="fu">getElementsByTagName</span>(<span class="st">'head'</span>)[<span class="dv">0</span>]<span class="op">.</span><span class="fu">appendChild</span>(css)<span class="op">;</span> })()<span class="op">;</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span></code></pre></div>
+<h2 id="thats-all">That’s all!</h2>
+<p>大概是這樣了，其實很多都是照著別人的東西上的說明做的，沒啥特別了不起的地方…</p>
+    </section>
+</article>
+
+        </main>
+
+        
+          <div class="comments">
+            <h2>Comments</h2>
+            <div id="disqus_thread"></div>
+          </div>
+          <script>
+
+          var disqus_config = function () {
+            this.page.identifier = '/posts/2019-07-19-how-i-made-this-blog.html';
+            this.page.url = 'https://usefulalgorithm.github.io/posts/' + '/posts/2019-07-19-how-i-made-this-blog.html';
+          };
+          (function() {
+            var d = document, s = d.createElement('script');
+            s.src = 'https://usefulalgorithm.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+          })();
+          </script>
+          <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+
+        <div class="contacts">
+          <a href="https://usefulalgorithm.github.io/rss.xml">
+            <i class="fas fa-rss"></i>
+          </a>
+          <a href="https://github.com/usefulalgorithm">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/tsungjulii">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="https://twitter.com/usefulalgorithm">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="mailto:usefulalgorithm@gmail.com">
+            <i class="far fa-envelope"></i>
+          </a>
+        </div>
+        <footer>
+          Site proudly generated by
+          <a href="http://jaspervdj.be/hakyll">Hakyll</a>
+        </footer>
+    </body>
+</html>

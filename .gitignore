@@ -1,6 +1,6 @@
+# Stack stuff
 .stack-work/
 _cache/
-_site/
-stack.yaml.lock
+
 .env
 fillin-release-dates/

@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta property="og:image" content="/images/plane-of-immanence.png">
+        <title>Blog without Organs - Advent Of Code 2019, Day 15</title>
+        <link rel="stylesheet" href="../css/default.css" />
+        <link rel="stylesheet" href="../css/syntax.css" />
+        <link rel="icon" href="../images/favicon.ico" />
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro|Roboto+Mono:300|Noto+Sans+TC:300&display=swap" rel="stylesheet"> 
+        <!-- <script src="https://kit.fontawesome.com/5b5c2f44f2.js"></script> -->
+        <script type="text/javascript"> (function() { var css =
+          document.createElement('link'); css.href =
+            'https://use.fontawesome.com/releases/v5.1.0/css/all.css'; css.rel =
+            'stylesheet'; css.type = 'text/css';
+          document.getElementsByTagName('head')[0].appendChild(css); })();
+        </script>
+       
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <a href="../">Blog without Organs</a>
+            </div>
+            <nav>
+                <a href="../">Home</a>
+                <a href="../about.html">About</a>
+                <a href="../blogroll.html">Blogroll</a>
+                <a href="../archive.html">Archive</a>
+            </nav>
+        </header>
+
+        <main role="main">
+            <h1>Advent Of Code 2019, Day 15</h1>
+            <article>
+    <section class="header">
+        Posted on March 25, 2020
+        
+        <br>
+        
+        Tags: <a title="All pages tagged 'coding and stuff'." href="../tags/coding%20and%20stuff.html" rel="tag">coding and stuff</a>
+        
+    </section>
+    <section>
+        <p>最近看 <a href="https://www.rust-lang.org/">Rust</a> 好像還蠻紅的，想說不如趁著工作比較沒那麼忙的時候試著用它來做做看 <a href="https://adventofcode.com/">Advent Of Code</a>，這幾天做得還蠻起勁的… 這兩天被<a href="https://adventofcode.com/2019/day/16">第 15 天的題目</a>卡了超久，結果發現都是卡在一些其實想通了就會覺得很蠢的地方，想說不如紀錄一下。</p>
+<h2 id="why-rust">Why Rust?</h2>
+<p>原本有想過與其學一個之前完全沒有碰過的語言，倒不如把一直以來學得零零落落的 Haskell 好好地用熟跟搞懂，但是 <a href="https://doc.rust-lang.org/cargo/">Cargo</a> 做為一個包管理器實在是太好用了，相較之下 Haskell 的 <a href="https://docs.haskellstack.org/en/stable/README/">stack</a> 在之前使用的經驗上就比較麻煩，我到現在還是搞不懂什麼時候該 <code>stack install</code> 什麼時候不該。 (理論上貌似是根本就不該做這件事情，但是好像很多執行檔的官方安裝教學都是在使用這個指令？搞不懂…)</p>
+<p>另外 Rust 比起 Haskell 這種純到不能再純的函數語言，在程式的自由度上我覺得還是高上不少，至少那些 C++ 裡面很常見的資料結構諸如 vector、 hash map 跟 hash set 之類的，在 Rust 裡面的用法其實也跟 C++ 裡的沒太大差別。反觀 Haskell 光是 map 要怎麼樣更新我到現在都還沒搞清楚過… 可能實際上沒那麼難？網路上我看過幾乎所有學會 Haskell 的人都說只要一旦能搞懂單子到底在幹嘛的時候，基本上就可以算是半通了，之後有空有心情的時候再看看吧。</p>
+<p>Rust 實際上使用起來，我覺得最爽的點是在於它的編譯器丟出來的錯誤訊息，與其說是跟你講說哪裡做錯哪裡編不過，更像是跟你講說哪個地方的錯誤該用什麼方式修改。 Rust 當然也是有些東西 (e.g. 聰明指標那部分) 個人覺得設計得有點反人類，可能要真的很常用才會比較熟悉整套 Rust 語法的系統。但是 Rust 編譯器會跟你講說是哪一變數的 lifetime 不夠長、哪一行忘記 dereference、哪個變數在宣告的時候忘記加上 <code>mut</code> (Rust 所有的變數預設都是 immutable 的，需要加上 <code>mut</code> 才能夠在宣告之後去改動變數的值) 等等，其實只要照做就可以修掉那個錯誤。</p>
+<p>最後就是 Rust 本質上是強型別語言，前幾個禮拜在狂刻 Python 的我重新碰到一個會幫我做 type checking 的語言真的是還蠻感動的。</p>
+<h2 id="advent-of-code">Advent Of Code?</h2>
+<p>基本上就是一拯救聖誕老公公的解題遊戲，但他的 puzzle input 都不是有辦法用人肉 parse + 計算的類型，然後好像是亂數產生的，還算有趣。似乎是每年年底會舉行？</p>
+<h2 id="whats-in-day-15">What’s in day 15?</h2>
+<p>在前幾天裡已經做了一台能夠讀取程式碼並做出相對應反應的電腦，能夠對送進來的程式碼做讀寫修改，同時也能吃外部送進來的輸入值，跟把值輸出到外部。</p>
+<p>在這題裡面，我們要當一個二維平面上面的機器人，平面上會有牆壁擋路，而我們要想辦法走到一個事先不知道位置，只有抵達時才會知道位置的點。機器人一開始是待在 (0, 0)，可以朝北南西東四個方向前進。如果機器人想朝北前進，就要把 1 輸入進電腦裡，電腦會輸出 0 (前面是擋路的牆，不能走)，1 (前面沒有東西，可以前進到這格) 或是 2 (此移動後抵達終點)。想要朝南則是輸入 2，朝西是 3，朝東是 4。</p>
+<p>第一小題是要算出從起點到終點至少會需要幾步路。</p>
+<p>第二小題是要算從終點開始，要花多少時間才能把整個地圖上可以填的地方 (也就是不是牆壁的格子) 填滿：</p>
+<p>(<code>#</code>：牆壁，<code>*</code>：終點，<code>.</code>：還沒被填過的格子，<code>O</code>：被填過的格子)</p>
+<pre><code>t=0:
+
+##.##..#.
+##....#..
+#.#.*...#
+...#.###.
+.#.......
+
+t=1:
+
+##.##..#.
+##..O.#..
+#.#O*O..#
+...#O###.
+.#.......
+
+t=2:
+
+##.##..#.
+##.OOO#..
+#.#O*OO.#
+...#O###.
+.#..O....
+
+t=3:
+
+##.##O.#.
+##OOOO#..
+#.#O*OOO#
+...#O###.
+.#.OOO...
+
+t=4:
+
+##O##OO#.
+##OOOO#O.
+#.#O*OOO#
+...#O###.
+.#OOOOO..
+
+t=5:
+
+##O##OO#.
+##OOOO#OO
+#.#O*OOO#
+..O#O###.
+.#OOOOOO.
+
+t=6:
+
+##O##OO#O
+##OOOO#OO
+#.#O*OOO#
+.OO#O###.
+.#OOOOOOO
+
+t=7:
+
+##O##OO#O
+##OOOO#OO
+#O#O*OOO#
+OOO#O###O
+.#OOOOOOO
+
+t=8:
+
+##O##OO#O
+##OOOO#OO
+#O#O*OOO#
+OOO#O###O
+O#OOOOOOO</code></pre>
+<p>在這邊的話需要 8 個單位時間才能夠把整個地圖上所有能夠填的格子都填滿。</p>
+<h2 id="how-to-solve-this-damn-thing">How to solve this damn thing?</h2>
+<h3 id="第一題">第一題</h3>
+<p>我主要是在第一題的時候卡關，卡在一個很呆的點… 我一開始覺得只要用簡單的 BFS 去不停地看目前所知的格子之中，哪些格子可以走到相鄰的未探索的格子，這樣不停地去拓展 frontier，可以很快地就找到終點。但是我忘記要探索一個新的格子時，機器人必須先走到那個格子的旁邊才有辦法：(<code>?</code>：下個要探索的，<code>#</code>：牆壁，<code>O</code>：可以走的格子，<code>*</code>：機器人目前所在地，<code></code>：機器人還不知道可以探索的格子)</p>
+<pre><code>grid:
+
+   ?##O###
+  #O#OO#OO
+  #OOO#OO#
+ #OO####O*
+  #OOOOOO#</code></pre>
+<p>所以為了要探索左上角的 <code>?</code>，機器人必須從右下角一路走到 <code>?</code> 下方的格子，才能夠進行探索：機器人不能瞬間傳送，沒辦法在右下角遠端探測左上角待觀測的格子。</p>
+<p>在我的實作裡面，機器人需要記下目前走過的地圖、當前的方向、現在所在的格子，以及下一個需要探索的格子。機器人會輸入自己目前的方向到電腦裡面，再根據電腦的回答來判斷是不是能夠前進到下一個格子裡面，如果可以的話就更新目前所在的格子為下一個格子。</p>
+<p>接下來再算出周遭的格子哪一格可以被作為下一個可以前進的選項：如果周遭有還沒有探測過的格子，那就將它作為下一個格子，並算出從現在的格子走到下一個格子的方向是什麼。如果周遭的格子都探測過了，則選擇周遭格子內所需步數最少的格子作為下一個格子，另外因為我們不希望重複走過之前走過的路，所以把周遭格子之中不是下一個格子，但也不是牆壁的格子的步數設定為很大的數字 (1,000,000,000)。</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> get_next(<span class="op">&amp;</span><span class="kw">mut</span> <span class="kw">self</span>) <span class="op">-&gt;</span> Coordinate <span class="op">{</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> c <span class="op">=</span> <span class="kw">self</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span>current</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span>neighbors()</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span>into_iter()</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span>filter(<span class="op">|</span>c<span class="op">|</span> <span class="op">!</span><span class="kw">self</span><span class="op">.</span>map<span class="op">.</span>contains_key(c))</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span>next()<span class="op">;</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">let</span> <span class="cn">Some</span>(result) <span class="op">=</span> c <span class="op">{</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> result<span class="op">;</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> result <span class="op">=</span> <span class="kw">self</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span>current</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span>neighbors()</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span>into_iter()</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span>filter(<span class="op">|</span>c<span class="op">|</span> <span class="kw">self</span><span class="op">.</span>map<span class="op">.</span>get(c)<span class="op">.</span>unwrap()<span class="op">.</span><span class="dv">0</span> <span class="op">==</span> <span class="pp">Tile::</span>Empty)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span>min_by(<span class="op">|</span>x<span class="op">,</span> y<span class="op">|</span> <span class="kw">self</span><span class="op">.</span>get_cost(<span class="op">&amp;</span>x)<span class="op">.</span>unwrap()<span class="op">.</span>cmp(<span class="op">&amp;</span><span class="kw">self</span><span class="op">.</span>get_cost(<span class="op">&amp;</span>y)<span class="op">.</span>unwrap()))</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span>unwrap()<span class="op">;</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> n <span class="kw">in</span> <span class="kw">self</span><span class="op">.</span>current<span class="op">.</span>neighbors()<span class="op">.</span>iter() <span class="op">{</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">*</span>n <span class="op">!=</span> result <span class="op">{</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>            <span class="kw">let</span> v <span class="op">=</span> <span class="kw">self</span><span class="op">.</span>map<span class="op">.</span>get_mut(n)<span class="op">.</span>unwrap()<span class="op">;</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> (<span class="op">*</span>v)<span class="op">.</span><span class="dv">0</span> <span class="op">==</span> <span class="pp">Tile::</span>Empty <span class="op">{</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>                (<span class="op">*</span>v)<span class="op">.</span><span class="dv">1</span> <span class="op">=</span> <span class="dv">1_000_000_000</span><span class="op">;</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>    result</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>Rust 好用的點我覺得就是那些 iterator 跟 map / filter methods，不然整天都在寫迴圈，一堆大括號看了就頭暈。</p>
+<h3 id="第二題">第二題</h3>
+<p>第二題反而可以用第一題我原先搞錯的做法來做，直接用 BFS 來探索還沒被填過的格子。</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> get_time(<span class="op">&amp;</span><span class="kw">self</span>) <span class="op">-&gt;</span> <span class="dt">Option</span><span class="op">&lt;</span><span class="dt">u64</span><span class="op">&gt;</span> <span class="op">{</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> os <span class="op">=</span> <span class="kw">self</span><span class="op">.</span>oxygen_system<span class="op">?;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> result <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> visited<span class="op">:</span> HashSet<span class="op">&lt;</span>Coordinate<span class="op">&gt;</span> <span class="op">=</span> <span class="pp">HashSet::</span>new()<span class="op">;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> frontier<span class="op">:</span> <span class="dt">Vec</span><span class="op">&lt;</span>Coordinate<span class="op">&gt;</span> <span class="op">=</span> os</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span>neighbors()</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span>into_iter()</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span>filter(<span class="op">|</span>i<span class="op">|</span> <span class="kw">self</span><span class="op">.</span>get_tile(i) <span class="op">==</span> <span class="cn">Some</span>(<span class="pp">Tile::</span>Empty))</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span>collect()<span class="op">;</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    visited<span class="op">.</span>insert(os)<span class="op">;</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> <span class="op">!</span>frontier<span class="op">.</span>is_empty() <span class="op">{</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> <span class="kw">mut</span> new_frontier <span class="op">=</span> <span class="dt">Vec</span><span class="pp">::</span>new()<span class="op">;</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> c <span class="kw">in</span> frontier<span class="op">.</span>into_iter() <span class="op">{</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>            visited<span class="op">.</span>insert(c)<span class="op">;</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>            <span class="kw">let</span> <span class="kw">mut</span> neighbors <span class="op">=</span> c</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>                <span class="op">.</span>neighbors()</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>                <span class="op">.</span>into_iter()</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>                <span class="op">.</span>filter(<span class="op">|</span>i<span class="op">|</span> <span class="kw">self</span><span class="op">.</span>get_tile(i) <span class="op">==</span> <span class="cn">Some</span>(<span class="pp">Tile::</span>Empty) <span class="op">&amp;&amp;</span> <span class="op">!</span>visited<span class="op">.</span>contains(i))</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>                <span class="op">.</span>collect()<span class="op">;</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>            new_frontier<span class="op">.</span>append(<span class="op">&amp;</span><span class="kw">mut</span> neighbors)<span class="op">;</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>        frontier <span class="op">=</span> new_frontier<span class="op">;</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>        result <span class="op">+=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>    <span class="cn">Some</span>(result)</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>Rust 沒有像 Python 裡的 <code>None</code> 或是 C / C++ 裡面的 <code>NULL</code> 之類的東西，而是用基本上跟 Haskell 的 <code>Maybe</code> 完全相同的 <code>Option&lt;&gt;</code> 來包住一個可能有也可能沒有值的變數。但 Rust 裡面的這種 functor (感覺上 Rust 的 functor 跟 iterator 好像是同一件事情？) 又跟 Haskell 裡面的 monad 感覺不太一樣，自己的感覺是 Rust 的型別反而比 Haskell 的再沒限制一點。</p>
+<h2 id="codes">Codes</h2>
+<p><a href="https://github.com/usefulalgorithm/advent_of_code_2019/blob/master/day15.rs">GitHub</a></p>
+<p>用兩個機器人的 <code>struct</code> 應該是完全沒必要的，但實在是懶得 refactor 了…</p>
+    </section>
+</article>
+
+        </main>
+
+        
+          <div class="comments">
+            <h2>Comments</h2>
+            <div id="disqus_thread"></div>
+          </div>
+          <script>
+
+          var disqus_config = function () {
+            this.page.identifier = '/posts/2020-03-25-2019-aoc-day-15.html';
+            this.page.url = 'https://usefulalgorithm.github.io/posts/' + '/posts/2020-03-25-2019-aoc-day-15.html';
+          };
+          (function() {
+            var d = document, s = d.createElement('script');
+            s.src = 'https://usefulalgorithm.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+          })();
+          </script>
+          <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+
+        <div class="contacts">
+          <a href="https://usefulalgorithm.github.io/rss.xml">
+            <i class="fas fa-rss"></i>
+          </a>
+          <a href="https://github.com/usefulalgorithm">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/tsungjulii">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="https://twitter.com/usefulalgorithm">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="mailto:usefulalgorithm@gmail.com">
+            <i class="far fa-envelope"></i>
+          </a>
+        </div>
+        <footer>
+          Site proudly generated by
+          <a href="http://jaspervdj.be/hakyll">Hakyll</a>
+        </footer>
+    </body>
+</html>
