@@ -7,6 +7,10 @@ on:
       - main
     paths:
       - 'posts/**'
+  workflow_run:
+    workflows: [Generate post from PR]
+    types:
+      - completed
 
 jobs:
   build:
