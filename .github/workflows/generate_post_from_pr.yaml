@@ -3,11 +3,12 @@ description: When a PR that has label `post` is merged, this action will generat
 
 on:
   pull_request:
-    types: [labeled, closed]
+    types:
+      - closed
 
 jobs:
   generate_post:
-    if: ${{ github.event.label.name == 'post' }}
+    if: ${{ github.event.pull_request.merged == true && contains(github.event.pull_request.labels.*.name, 'post') }}
     runs-on: ubuntu-latest
 
     steps:
