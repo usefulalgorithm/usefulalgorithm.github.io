@@ -14,16 +14,13 @@ jobs:
     environment: deployment
     steps:
       - uses: actions/checkout@v4
-
-      - uses: haskell-actions/setup@v2.7.9
         with:
-          ghc-version: 9.8.4
-          enable-stack: true
-          stack-setup-ghc: true
-
-      - run: |
-          stack build
-          stack exec site build
+          fetch-depth: 2
+      
+      - id: stack
+        uses: freckle/stack-action@v5
+      
+      - run: stack exec site build
 
       - run: |
           if [[ $(git status --porcelain docs/) ]]; then
