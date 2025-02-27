@@ -1,0 +1,32 @@
+name: Create Post from PR
+
+on:
+  pull_request:
+    types: [labeled, closed]
+
+jobs:
+  create_post:
+    if: ${{ (github.event.pull_request.merged == true && github.event.label.name == 'post') }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Create post file
+        id: create_post
+        run: |
+          PR_TITLE=$(echo "${{ github.event.pull_request.title }}" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
+          DATE=$(date +'%Y-%m-%d')
+          PR_TITLE="${DATE}-${PR_TITLE}"
+          PR_BODY=${{ github.event.pull_request.body }}
+          POST_FILE="posts/${PR_TITLE}.md"
+          echo "${PR_BODY}" >> $POST_FILE
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add posts/
+          git commit -m "Create post: ${{ github.event.pull_request.title }}"
+          git push origin main
