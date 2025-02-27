@@ -18,11 +18,15 @@ jobs:
         id: create_post
         run: |
           PR_TITLE=${{ github.event.pull_request.title }}
-          PR_TITLE=${PR_TITLE#post/}
+          DRAFT_TITLE=${PR_TITLE#post/}
+
+          # Remove the draft item
+          git rm drafts/${DRAFT_TITLE}
+
           DATE=$(date +'%Y-%m-%d')
-          PR_TITLE="${DATE}-${PR_TITLE}"
+          POST_TITLE="${DATE}-${DRAFT_TITLE}"
           PR_BODY=${{ github.event.pull_request.body }}
-          POST_FILE="posts/${PR_TITLE}.md"
+          POST_FILE="posts/${POST_TITLE}.md"
           echo "${PR_BODY}" >> $POST_FILE
 
       - name: Commit and push changes
