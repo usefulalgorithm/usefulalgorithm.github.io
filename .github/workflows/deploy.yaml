@@ -1,0 +1,40 @@
+name: Deploy personal website
+
+on:
+  workflow_dispatch:
+  push: # If there's anything new in `posts`, run this action to trigger the deployment.
+    paths:
+      - 'posts/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment: deployment
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: haskell-actions/setup@v2.7.9
+        with:
+          ghc-version: 9.8.4
+          enable-stack: true
+          stack-setup-ghc: true
+
+      - run: |
+          stack build
+          stack exec site build
+
+      - run: |
+          if [[ $(git status --porcelain docs/) ]]; then
+            git config --global user.name "github-actions[bot]"
+            git config --global user.email "github-actions[bot]@users.noreply.github.com"
+            git add docs/
+            if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+              git commit -m "Update site at $(date)"
+            else
+              new_post=$(git diff --name-only HEAD^ | grep 'posts/')
+              git commit -m "Add new post: ${new_post}"
+            fi
+            git push origin main
+          else
+            echo "No changes in docs/ directory"
+          fi
