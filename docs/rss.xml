@@ -7,8 +7,50 @@
         <description><![CDATA[Just a regular good ol fashioned blog feed]]></description>
         <atom:link href="http://usefulalgorithm.github.io/rss.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Fri, 06 Sep 2024 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Thu, 27 Feb 2025 00:00:00 UT</lastBuildDate>
         <item>
+    <title>Restructured and Added Some Automation for This Blog</title>
+    <link>http://usefulalgorithm.github.io/posts/2025-02-27-restructured-and-automated.html</link>
+    <description><![CDATA[<article>
+    <section class="header">
+        Posted on February 27, 2025
+        
+        <br>
+        
+        Tags: <a title="All pages tagged &#39;about this blog&#39;." href="/tags/about%20this%20blog.html" rel="tag">about this blog</a>
+        
+    </section>
+    <section>
+        <p>I have been avoiding changing things up in this blog even though I really should have done this a long time ago. There were several things I did not like so much about it:</p>
+<h3 id="having-to-have-a-working-haskell-environment">Having to Have a Working Haskell Environment</h3>
+<p>To actually generate the site, I needed to do the following:</p>
+<ul>
+<li><code>stack build</code> - this builds the executable called <code>site</code> that consumes content in <code>posts/</code> and churns out HTML files.</li>
+<li><code>stack exec site build</code> - this runs the <code>site</code> executable and builds the HTML files, which are stored in <code>_site/</code>.</li>
+</ul>
+<p>Since everything is built offline, a working Haskell environment was necessary.</p>
+<h3 id="lots-of-manual-steps">Lots of Manual Steps</h3>
+<p>As stated above, since the generated HTML files are in <code>_site/</code>, I needed to find a way to get GH pages to host them. The way I did it was to have <a href="https://github.com/usefulalgorithm/old-website">another separate repo</a>, make sure <code>_site/</code> is pointing to that repo, then run <code>stack exec site build</code>, check that things are generated correctly in <code>_site</code>, and finally push to both this repo and the actual GH pages repo.</p>
+<hr />
+<p>Now that I’m not employed and have some free time, I decided it was finally time to make it more usable and generally encourage myself to post more often. Here’s what I did:</p>
+<h3 id="deprecate-the-old-gh-pages-repo-and-just-use-this-one">Deprecate the Old GH Pages Repo and Just Use This One</h3>
+<p>This should be quite obvious - there’s a <a href="https://jaspervdj.be/hakyll/tutorials/github-pages-tutorial.html">tutorial</a> that tells you how to change your executable’s target directory from <code>_site/</code> to <code>docs/</code>. I can just ditch the old repo, rename the Haskell repo to <code>usefulalgorithm.github.io</code>, and have its page deployed from <code>docs/</code> in the main branch. I’m pretty sure the directory has to be called <code>docs/</code> and not anything else though.</p>
+<h3 id="build-deploy-from-gh-actions">Build &amp; Deploy from GH Actions</h3>
+<p>I’ve done a bunch of GH actions in my previous job and found them to be a huge time saver. So what I wanted to do is just update Markdown files in <code>posts/</code>, and then trigger the Haskell commands from within the action runner.</p>
+<hr />
+<p>Some things I hope to do in the near future. These aren’t hard in themselves but probably require a little bit more consideration.</p>
+<h3 id="post-via-prs">Post via PRs</h3>
+<p>Writing Markdown files is still a little annoying, especially when I’m on my phone and just want to post something to my blog. I want to find a way to create posts through pull requests, but I need to think about where to put things like tags and how to format the pull request message into a proper Markdown file.</p>
+<h3 id="repost-to-threads-and-possibly-other-platforms">Repost to Threads (and Possibly Other Platforms)</h3>
+<p>More often than not, I would repost the published post to my socials. I know social media is like the worst thing that’s happened in 20 years, but I still want people to read what I have to say.</p>
+    </section>
+</article>
+]]></description>
+    <pubDate>Thu, 27 Feb 2025 00:00:00 UT</pubDate>
+    <guid>http://usefulalgorithm.github.io/posts/2025-02-27-restructured-and-automated.html</guid>
+    <dc:creator>Tsung-Ju Lii</dc:creator>
+</item>
+<item>
     <title>2024 July & August Listenings</title>
     <link>http://usefulalgorithm.github.io/posts/2024-09-06-july-listenings.html</link>
     <description><![CDATA[<article>
@@ -911,101 +953,6 @@
 ]]></description>
     <pubDate>Sat, 11 Nov 2023 00:00:00 UT</pubDate>
     <guid>http://usefulalgorithm.github.io/posts/2023-11-11-october-listenings.html</guid>
-    <dc:creator>Tsung-Ju Lii</dc:creator>
-</item>
-<item>
-    <title>2023 September Listenings</title>
-    <link>http://usefulalgorithm.github.io/posts/2023-10-11-september-listenings.html</link>
-    <description><![CDATA[<article>
-    <section class="header">
-        Posted on October 11, 2023
-        
-        <br>
-        
-        Tags: <a title="All pages tagged &#39;music and stuff&#39;." href="/tags/music%20and%20stuff.html" rel="tag">music and stuff</a>
-        
-    </section>
-    <section>
-        <h2 id="laurel-halo---atlas">Laurel Halo - Atlas</h2>
-<p><img src="https://f4.bcbits.com/img/a2169093004_16.jpg" /></p>
-<p>Impressionist neo-classical / ambient jazz. Postmodern Joe Hisashi is what came to mind. Love virtually every track on this album.</p>
-<p>Release date: 2023-09-26</p>
-<p>[9.0/10]</p>
-<h2 id="armand-hammer---we-buy-diabetic-test-strips">Armand Hammer - We Buy Diabetic Test Strips</h2>
-<p><img src="https://f4.bcbits.com/img/a1265013984_16.jpg" /></p>
-<p>Abstract conscious hip-hop. The lyrics on this album is, like, really out there…</p>
-<p>Release date: 2023-09-29</p>
-<p>[8.8/10]</p>
-<h2 id="grischa-lichtenberger---works-for-last-work">Grischa Lichtenberger - Works for Last Work</h2>
-<p><img src="https://f4.bcbits.com/img/a3307750014_16.jpg" /></p>
-<p>Modern composition. I dig this a lot.</p>
-<p>Release date: 2023-04-16</p>
-<p>[8.7/10]</p>
-<h2 id="yeule---softscars">yeule - softscars</h2>
-<p><img src="https://f4.bcbits.com/img/a4141983950_16.jpg" /></p>
-<p>Glitch pop / dream pop. While not sounding as distinct / left-field as <code>Glitch Princess</code>, this is simply a really good pop album with banger songs.</p>
-<p>Release date: 2023-09-22</p>
-<p>[8.6/10]</p>
-<h2 id="radian---distorted-rooms">Radian - Distorted Rooms</h2>
-<p><img src="https://f4.bcbits.com/img/a0593017886_16.jpg" /></p>
-<p>Minimal electronic noir-jazz. Love this stuff.</p>
-<p>Release date: 2023-09-22</p>
-<p>[8.4/10]</p>
-<h2 id="tirzah---trip9love">Tirzah - trip9love…???</h2>
-<p><img src="https://f4.bcbits.com/img/a2540400939_16.jpg" /></p>
-<p>Minimalist downtempo pop. People are saying it’s somewhat repetitive but I don’t think so at all - when the loops are so nice it’s not repetitive, it’s just pretty good.</p>
-<p>Release date: 2023-09-05</p>
-<p>[8.2/10]</p>
-<h2 id="loraine-james---gentle-confrontation">Loraine James - Gentle Confrontation</h2>
-<p><img src="https://f4.bcbits.com/img/a2879421801_16.jpg" /></p>
-<p>IDM / drill and bass. Love the songs on this one.</p>
-<p>Release date: 2023-09-22</p>
-<p>[8.2/10]</p>
-<h2 id="the-body---i-shall-die-here-earth-triumphant">The Body - I Shall Die Here / Earth Triumphant</h2>
-<p><img src="https://f4.bcbits.com/img/a1210343578_16.jpg" /></p>
-<p>Drone metal / industrial. The first half of this album is basically their identically named album from ~10 years ago remade (or is it just remastered?) The original sound is heavier and more unforgiving whilst this one sounds a lot more refined. Second half is what was going to become a companion album to the aforementioned album, and to me it is a lot more industrial / hip-hop leaning.</p>
-<p>Release date: 2023-06-30</p>
-<p>[8.1/10]</p>
-<h2 id="ὁπλίτης---ψευδομένη">Ὁπλίτης - Ψευδομένη</h2>
-<p><img src="https://f4.bcbits.com/img/a0201356871_16.jpg" /></p>
-<p>Like the other album this one’s also pretty good. It’s a bit less thrash and a bit more prog though in my opinion.</p>
-<p>Release date: 2023-01-01</p>
-<p>[8.0/10]</p>
-<h2 id="jeff-rosenstock---hellmode">Jeff Rosenstock - HELLMODE</h2>
-<p><img src="https://f4.bcbits.com/img/a0462955102_16.jpg" /></p>
-<p>Probably one of the best pop punk albums I’ve heard in a long time.</p>
-<p>Release date: 2023-08-31</p>
-<p>[8.0/10]</p>
-<h2 id="gridlink---coronet-juniper">Gridlink - Coronet Juniper</h2>
-<p><img src="https://f4.bcbits.com/img/a3952026251_16.jpg" /></p>
-<p>I’d say this is their groove metal album, the riffs are more melodic at the expense of soaring guitar solos. Hopefully they stick around and Takafumi Matsubara is able to stay healthy.</p>
-<p>Release date: 2023-09-15</p>
-<p>[7.4/10]</p>
-<h2 id="haunter---please-understand">Haunter - Please Understand</h2>
-<p><img src="https://f4.bcbits.com/img/a0638916160_16.jpg" /></p>
-<p>Droning shoegaze music. Some songs have riffs that had me think of the nu metal drop D riffs.</p>
-<p>Release date: 2019-07-22</p>
-<p>[7.3/10]</p>
-<h2 id="nerves-baddington---no-survivor">Nerves Baddington - No Survivor</h2>
-<p><img src="https://f4.bcbits.com/img/a2994653313_16.jpg" /></p>
-<p>Drum and bass / industrial hip-hop. Pretty grim sounding.</p>
-<p>Release date: 2023-06-16</p>
-<p>[7.2/10]</p>
-<h2 id="what-is-your-name---my-name-is">what is your name? - My Name Is…</h2>
-<p><img src="https://f4.bcbits.com/img/a2797035787_16.jpg" /></p>
-<p>Indie rock / midwest emo.</p>
-<p>Release date: 2023-09-23</p>
-<p>[7.0/10]</p>
-<h2 id="croatian-amor---a-part-of-you-in-everything">Croatian Amor - A Part of You in Everything</h2>
-<p><img src="https://f4.bcbits.com/img/a2104959669_16.jpg" /></p>
-<p>Ambient techno. It’s OK I guess…</p>
-<p>Release date: 2023-05-26</p>
-<p>[6.8/10]</p>
-    </section>
-</article>
-]]></description>
-    <pubDate>Wed, 11 Oct 2023 00:00:00 UT</pubDate>
-    <guid>http://usefulalgorithm.github.io/posts/2023-10-11-september-listenings.html</guid>
     <dc:creator>Tsung-Ju Lii</dc:creator>
 </item>
 
