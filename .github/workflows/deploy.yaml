@@ -2,7 +2,9 @@ name: Deploy personal website
 
 on:
   workflow_dispatch:
-  push: # If there's anything new in `posts`, run this action to trigger the deployment.
+  push:
+    branches:
+      - main
     paths:
       - 'posts/**'
 
