@@ -32,7 +32,9 @@ This should be quite obvious - there's a [tutorial](https://jaspervdj.be/hakyll/
 
 I've done a bunch of GH actions in my previous job and found them to be a huge time saver. So what I wanted to do is just update Markdown files in `posts/`, and then trigger the Haskell commands from within the action runner.
 
-## What Will Be Done (Hopefully in the Near Future)
+---
+
+Some things I hope to do in the near future. These aren't hard in themselves but probably require a little bit more consideration.
 
 ### Post via PRs
 
