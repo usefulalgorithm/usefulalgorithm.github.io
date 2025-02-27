@@ -37,6 +37,6 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ steps.get_name.outputs.branch_name }}
           base: main
-          title: posts/${{ steps.get_name.outputs.branch_name }}
+          title: post/${{ steps.get_name.outputs.branch_name }}
           body-path: '${{ github.workspace }}/.github/PULL_REQUEST_TEMPLATE/post.md'
           labels: 'post'
