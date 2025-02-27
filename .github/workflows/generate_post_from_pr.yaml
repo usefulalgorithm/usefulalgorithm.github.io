@@ -25,10 +25,12 @@ jobs:
           git rm drafts/${DRAFT_TITLE}
 
           DATE=$(date +'%Y-%m-%d')
-          POST_TITLE="${DATE}-${DRAFT_TITLE}"
-          PR_BODY=${{ github.event.pull_request.body }}
-          POST_FILE="posts/${POST_TITLE}.md"
-          echo "${PR_BODY}" >> $POST_FILE
+          POST_FILE="posts/${DATE}-${DRAFT_TITLE}.md"
+          echo "Target: ${POST_FILE}"
+          cat >$POST_FILE <<EOL
+          ${{ github.event.pull_request.body }}
+          EOL
+          echo "Done creating post"
 
       - name: Commit and push changes
         run: |
