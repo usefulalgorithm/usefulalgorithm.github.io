@@ -51,6 +51,34 @@
     <dc:creator>Tsung-Ju Lii</dc:creator>
 </item>
 <item>
+    <title>Create New Posts by Making Pull Requests</title>
+    <link>http://usefulalgorithm.github.io/posts/2025-02-27-make-new-post-via-github-pull-request.html</link>
+    <description><![CDATA[<article>
+    <section class="header">
+        Posted on February 27, 2025
+        
+        <br>
+        
+        Tags: <a title="All pages tagged &#39;about this site&#39;." href="/tags/about%20this%20site.html" rel="tag">about this site</a>
+        
+    </section>
+    <section>
+        <p>This is a little easier than I thought it would be. So basically it generates a post from a pull request’s body and commits it to branch. I already have an action that reruns the site generator whenever something new appears in directory, so in effect I just need to write whatever I want to write in the PR’s body, and press when I’m happy with it.</p>
+<p>More specifically there are 4 GitHub actions in action (no pun intended):</p>
+<ol type="1">
+<li>Creates a PR by running an action: I want to be able to do it very easily, with this I only need to type in the title of the post and a new PR will be populated. Note that in order to make a new PR, I need to insert something into the new commit. That something is a file named .</li>
+<li>Generates the new post file in directory: when I’m good with the PR body and merge the PR, an action will pipe the body into the new file. The draft iteme will also be removed.</li>
+<li>Run the Haskell site generator. The action detects if anything’s changed in , and if so generates the static site. The generator itself doesn’t change much, the action nicely takes care of caching it so that it doesn’t spend twenty minutes compiling hakyll.</li>
+<li>Deploy to GH pages. I didn’t write this myself.</li>
+</ol>
+    </section>
+</article>
+]]></description>
+    <pubDate>Thu, 27 Feb 2025 00:00:00 UT</pubDate>
+    <guid>http://usefulalgorithm.github.io/posts/2025-02-27-make-new-post-via-github-pull-request.html</guid>
+    <dc:creator>Tsung-Ju Lii</dc:creator>
+</item>
+<item>
     <title>2024 July & August Listenings</title>
     <link>http://usefulalgorithm.github.io/posts/2024-09-06-july-listenings.html</link>
     <description><![CDATA[<article>
@@ -853,106 +881,6 @@
 ]]></description>
     <pubDate>Sat, 09 Dec 2023 00:00:00 UT</pubDate>
     <guid>http://usefulalgorithm.github.io/posts/2023-12-09-november-listenings.html</guid>
-    <dc:creator>Tsung-Ju Lii</dc:creator>
-</item>
-<item>
-    <title>2023 October Listenings</title>
-    <link>http://usefulalgorithm.github.io/posts/2023-11-11-october-listenings.html</link>
-    <description><![CDATA[<article>
-    <section class="header">
-        Posted on November 11, 2023
-        
-        <br>
-        
-        Tags: <a title="All pages tagged &#39;music and stuff&#39;." href="/tags/music%20and%20stuff.html" rel="tag">music and stuff</a>
-        
-    </section>
-    <section>
-        <h2 id="sprain---lamb-as-effigy">Sprain - Lamb as Effigy</h2>
-<p><img src="https://f4.bcbits.com/img/a0587477614_16.jpg" /></p>
-<p>Experimental post-noise rock / drone. Strong AOTY candidate.</p>
-<p>Release date: 2023-09-01</p>
-<p>[9.1/10]</p>
-<h2 id="sampha---lahai">Sampha - Lahai</h2>
-<p><img src="https://f4.bcbits.com/img/a1179241798_16.jpg" /></p>
-<p>I love basically every track on this album.</p>
-<p>Release date: 2023-10-20</p>
-<p>[8.6/10]</p>
-<h2 id="marica-bc---spike-field">Marica BC - Spike Field</h2>
-<p><img src="https://f4.bcbits.com/img/a0787557467_16.jpg" /></p>
-<p>Spectral, melancholic dream pop / folk. Compared to <code>Hyaline</code> this one features lusher instrumentation and is overall better produced. The songs are incredibly well written. Great album! FFO Grouper and Midwife.</p>
-<p>Release date: 2023-10-20</p>
-<p>[8.4/10]</p>
-<h2 id="klara-lewis-nik-colk-void---full-on">Klara Lewis &amp; Nik Colk Void - Full On</h2>
-<p><img src="https://f4.bcbits.com/img/a2408292926_16.jpg" /></p>
-<p>FFO Curd Duca, Actress. Abstract collage music.</p>
-<p>Release date: 2023-06-30</p>
-<p>[8.3/10]</p>
-<h2 id="mckinley-dixon---beloved-paradise-jazz">McKinley Dixon - Beloved! Paradise! Jazz?</h2>
-<p><img src="https://f4.bcbits.com/img/a1333962670_16.jpg" /></p>
-<p>Jazz-rap / conscious hip-hop. A great album! Awesome jazz beats and awesome lyrics.</p>
-<p>Release date: 2023-06-02</p>
-<p>[8.3/10]</p>
-<h2 id="shygirl---nymphs">Shygirl - Nymphs</h2>
-<p><img src="https://f4.bcbits.com/img/a2087620991_16.jpg" /></p>
-<p>Hypnogogic R&amp;B / trap. FFO Sega Bodega.</p>
-<p>Release date: 2022-09-30</p>
-<p>[8.3/10]</p>
-<h2 id="sg---for-lovers-only-rain-suite">SG - For Lovers Only / Rain Suite</h2>
-<p><img src="https://f4.bcbits.com/img/a2882953685_16.jpg" /></p>
-<p>It’s like the <a href="https://www.youtube.com/@Knobs">Knobs</a> or <a href="https://www.youtube.com/@collectoremitter">collector//emitter</a> pedal demos extended to be a standalone album. Dreamy lo-fi guitar ambient music.</p>
-<p>Release date: 2023-10-06</p>
-<p>[8.2/10]</p>
-<h2 id="maral---ground-groove">Maral - Ground Groove</h2>
-<p><img src="https://f4.bcbits.com/img/a2500288567_16.jpg" /></p>
-<p>Sprawling lo-fi industrial dub, or “folk club” as the artist described her music. Maral is an Iranian-American artist, and a lot of the samples on this album is from her personal archive of Iranian folk, pop &amp; classical albums.</p>
-<p>Release date: 2022-10-18</p>
-<p>[8.2/10]</p>
-<h2 id="modelactriz---dogsbody">Model/Actriz - Dogsbody</h2>
-<p><img src="https://f4.bcbits.com/img/a2228512258_16.jpg" /></p>
-<p>Angular post-punk. I like the last track, which is the most tranquil track among the album.</p>
-<p>Release date: 2023-02-24</p>
-<p>[8.0/10]</p>
-<h2 id="various-artists---v4-visions-of-love-androids">Various Artists - V4 Visions: Of Love &amp; Androids</h2>
-<p><img src="https://f4.bcbits.com/img/a0365594782_16.jpg" /></p>
-<p>House / funk / R&amp;B. Basically 90’s music. I like the R&amp;B cuts on the first disc.</p>
-<p>Release date: 2022-03-11</p>
-<p>[7.6/10]</p>
-<h2 id="the-armed---perfect-saviors">The Armed - Perfect Saviors</h2>
-<p><img src="https://f4.bcbits.com/img/a2690079050_16.jpg" /></p>
-<p>Poppy alternative punk. Not nearly as explosive as <code>Ultrapop</code>, instead this is much more in line with the usual alt-rock path.</p>
-<p>Release date: 2023-08-25</p>
-<p>[7.3/10]</p>
-<h2 id="oneohtrix-point-never---again">Oneohtrix Point Never - Again</h2>
-<p><img src="https://f4.bcbits.com/img/a4277554650_16.jpg" /></p>
-<p>Compared to his earlier stuff this is extremely safe.</p>
-<p>Release date: 2023-09-29</p>
-<p>[6.8/10]</p>
-<h2 id="lee-gamble---models">Lee Gamble - Models</h2>
-<p><img src="https://f4.bcbits.com/img/a2394588006_16.jpg" /></p>
-<p>Ambient pop. The vocals on this album is generated by AI. The theme he’s exploring on this album is very Hauntological, but I’d say it’s something one have to do some extra digging to find out.</p>
-<p>Release date: 2023-07-06</p>
-<p>[6.7/10]</p>
-<h2 id="eartheater---powder">Eartheater - Powder</h2>
-<p><img src="https://f4.bcbits.com/img/a2558704024_16.jpg" /></p>
-<p>Art pop / experimental R&amp;B. I think there are just too many producers on this album, making this album lacking a bit in terms of songwriting coherence, and sounding more like it’s from a generic pop artist that claims to be avant garde but doesn’t really know what they’re doing. There are cool tracks here and there, but as a whole it’s just a bit too all over the place.</p>
-<p>Release date: 2023-09-20</p>
-<p>[6.6/10]</p>
-<h2 id="sofia-kourtesis---madres">Sofia Kourtesis - Madres</h2>
-<p><img src="https://f4.bcbits.com/img/a4189602856_16.jpg" /></p>
-<p>Club-friendly electro-pop.</p>
-<p>Release date: 2023-10-27</p>
-<p>[6.3/10]</p>
-<h2 id="james-blake---playing-robots-into-heaven">James Blake - Playing Robots Into Heaven</h2>
-<p><img src="https://i.scdn.co/image/ab67616d0000b273921f7aa6349a070b6f26b3ff" /></p>
-<p>UK garage. While I still don’t really dig the minimal dubstep / r&amp;b fusion sound he’s going for all that much, this is a breath of fresh air compared with his previous more pop oriented albums.</p>
-<p>Release date: 2023-09-08</p>
-<p>[6.1/10]</p>
-    </section>
-</article>
-]]></description>
-    <pubDate>Sat, 11 Nov 2023 00:00:00 UT</pubDate>
-    <guid>http://usefulalgorithm.github.io/posts/2023-11-11-october-listenings.html</guid>
     <dc:creator>Tsung-Ju Lii</dc:creator>
 </item>
 
