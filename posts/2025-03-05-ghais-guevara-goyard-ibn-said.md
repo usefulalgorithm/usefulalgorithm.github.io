@@ -21,5 +21,6 @@ Fav tracks: Leprosy, 3400, Bystander Effect, 4L
 
 Score: 8.0
 
-訪談：https://floodmagazine.com/185519/ghais-guevara-goyard-ibn-said-in-convo/
-Bandcamp: https://ghais.bandcamp.com/album/goyard-ibn-said
+訪談：[https://floodmagazine.com/185519/ghais-guevara-goyard-ibn-said-in-convo/](https://floodmagazine.com/185519/ghais-guevara-goyard-ibn-said-in-convo/)
+
+Bandcamp: [https://ghais.bandcamp.com/album/goyard-ibn-said](https://ghais.bandcamp.com/album/goyard-ibn-said)
