@@ -2,7 +2,7 @@
 title: Ghais Guevara - Goyard Ibn Said
 layout: post
 comments: false
-tags: music, rap, 2025
+tags: music, rap, conscious hip-hop, 2025
 ---
 
 ![](https://f4.bcbits.com/img/a0355957126_16.jpg)

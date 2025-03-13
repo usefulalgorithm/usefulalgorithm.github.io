@@ -1,5 +1,5 @@
 ---
-title: Kenny Segal & K-the-I???] - Genuine Dexterity
+title: Kenny Segal & K-the-I??? - Genuine Dexterity
 layout: post
 comments: false
 tags: 2025, rap, abstract hip-hop, music
