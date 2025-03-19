@@ -1,26 +1,39 @@
-{-# LANGUAGE DeriveGeneric     #-}
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DeriveGeneric         #-}
+{-# LANGUAGE OverloadedStrings     #-}
+{-# OPTIONS_GHC -Wno-incomplete-patterns #-}
+{-# OPTIONS_GHC -Wno-name-shadowing #-}
+{-# LANGUAGE FlexibleInstances     #-}
+{-# LANGUAGE MultiParamTypeClasses #-}
 
 module Main where
 
 -- Standard library imports
-import           System.Environment    (getArgs, lookupEnv)
+import           System.Environment    (getArgs, getProgName, lookupEnv)
 
 -- Third-party library imports
-import           Control.Lens          ((^?))
+import           Control.Lens          (Identity (runIdentity), (^?))
 import           Data.Aeson            (FromJSON (parseJSON), ToJSON,
                                         Value (Object), decodeStrict, encode,
                                         (.:))
 import           Data.Aeson.Lens       (AsNumber (_Integer), key, nth)
 import           Data.ByteString       (ByteString)
 import qualified Data.ByteString.Char8 as BS
+import           Data.List             as L (intercalate)
+import           Data.Text             as T (unpack)
 import           GHC.Generics          (Generic)
 import           Network.HTTP.Simple   (Query, getResponseBody, httpBS,
                                         parseRequest_, setRequestHeader,
                                         setRequestQueryString)
+import           System.FilePath       (takeDirectory)
+import           Text.Ginger           (IncludeResolver, SourcePos, Template,
+                                        ToGVal (..), dict, easyRender,
+                                        parseGinger)
 
 -- Data type definitions
 data MainRelease = MainRelease {
+  artists  :: [String],
+  title    :: String,
+  year     :: Int,
   released :: String,
   imageUrl :: String,
   labels   :: [String],
@@ -29,20 +42,38 @@ data MainRelease = MainRelease {
 
 instance ToJSON MainRelease
 
+instance ToGVal m MainRelease where
+  toGVal release = dict [
+      ("artists", toGVal . L.intercalate ", " . artists $ release),
+      ("title", toGVal $ title release),
+      ("year", toGVal $ year release),
+      ("released", toGVal $ released release),
+      ("imageUrl", toGVal $ imageUrl release),
+      ("labels", toGVal . L.intercalate ", " . labels $ release),
+      ("uri", toGVal $ uri release)
+    ]
+
+
 instance FromJSON MainRelease where
   parseJSON (Object v) = do
-    uri <- v .: "uri"
+    artists <- v .: "artists" >>= traverse (.: "name")
+    title <- v .: "title"
+    year <- v .: "year"
     released <- v .: "released"
     images <- v .: "images"
     imageUrl <- case images of
         (img:_) -> img .: "resource_url"
         []      -> fail "No images found"
     labels <- v .: "labels" >>= traverse (.: "name")
+    uri <- v .: "uri"
     return MainRelease {
-      uri = uri,
+      artists = artists,
+      title = title,
+      year = year,
       released = released,
       imageUrl = imageUrl,
-      labels = labels
+      labels = labels,
+      uri = uri
     }
 
 -- Helper functions
@@ -89,6 +120,16 @@ getMainRelease releaseId = do
     Just release -> return release
     Nothing      -> fail "Cannot decode main release"
 
+nullResolver :: IncludeResolver Identity
+nullResolver = const $ return Nothing
+
+-- | This is our template. Because 'parseGinger' wants a monad (as loading
+-- includes would normally go through some sort of monadic API like 'IO'), we
+-- use 'Identity' here.
+getTemplate :: String -> Template SourcePos
+getTemplate content = either (error . show) id . runIdentity $
+  parseGinger nullResolver Nothing content
+
 -- Main function
 main :: IO ()
 main = do
@@ -99,4 +140,8 @@ main = do
              >>= getMainReleaseId
              >>= getMainRelease
       putStrLn $ BS.unpack $ BS.toStrict $ encode release
+      content <- getProgName >>= readFile . (++ "/app/templates/post.md") . takeDirectory
+      let template = getTemplate content
+      let output = T.unpack $ easyRender release template
+      putStrLn output
     _ -> putStrLn "Usage: pull_album_info <artist_name> <album_name>"
