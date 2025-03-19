@@ -21,19 +21,41 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Cache Haskell dependencies
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cabal/store
+            .github/scripts/pull_album_info/dist-newstyle
+          key: haskell-cache-${{ runner.os }}-${{ hashFiles('.github/scripts/pull_album_info/cabal.project.freeze') }}
+          restore-keys: |
+            haskell-cache-${{ runner.os }}-
+
       - name: Setup Haskell
         uses: haskell-actions/setup@v2.7.10
         with:
           ghc-version: 9.4.8
 
-      - name: Pull album info
-        id: pull_album_info
+      - name: Build
+        run: |
+          cd .github/scripts/pull_album_info
+          
+          # Ensure dependencies are up-to-date
+          cabal update
+          cabal freeze
+
+          # Build the app
+          cabal build
+
+      - name: Set branch name
+        id: set_name
         run: |
           BRANCH_NAME=$(echo "${{ github.event.inputs.album_title }}-${{ github.event.inputs.artist_name }}" | tr '[:upper:]' '[:lower:]' | tr -cd 'a-z0-9-')
+          echo "branch_name=$BRANCH_NAME" >> $GITHUB_OUTPUT
 
-          # Build album template post
-          cd .github/scripts/pull_album_info
-          cabal build
+      - name: Run
+        run: |
+          BRANCH_NAME=${{ steps.set_name.outputs.branch_name }}
           cabal run pull-album-info ${{ github.event.inputs.artist_name }} ${{ github.event.inputs.album_title }} $BRANCH_NAME
           mv $BRANCH_NAME ${{ github.workspace }}/drafts/$BRANCH_NAME
 
@@ -41,16 +63,13 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
-          # Set branch name to output
-          echo "branch_name=$branch_name" >> $GITHUB_OUTPUT
-
       - name: Create Pull Request
         id: create_pr
         uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ steps.pull_album_info.outputs.branch_name }}
+          branch: ${{ steps.set_name.outputs.branch_name }}
           base: main
-          title: post/${{ steps.pull_album_info.outputs.branch_name }}
-          body-path: '${{ github.workspace }}/drafts/${{ steps.pull_album_info.outputs.branch_name }}'
+          title: post/${{ steps.set_name.outputs.branch_name }}
+          body-path: '${{ github.workspace }}/drafts/${{ steps.set_name.outputs.branch_name }}'
           labels: 'post'
