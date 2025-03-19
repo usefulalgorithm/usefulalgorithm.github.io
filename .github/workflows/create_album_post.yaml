@@ -24,7 +24,6 @@ jobs:
       - name: Setup Haskell
         uses: haskell-actions/setup@v2.7.10
         with:
-          cabal-version: 2.4
           ghc-version: 9.4.8
 
       - name: Pull album info
