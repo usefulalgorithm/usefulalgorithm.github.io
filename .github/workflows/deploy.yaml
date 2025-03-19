@@ -22,6 +22,7 @@ jobs:
           fetch-depth: 2
       
       - id: stack
+        uses: freckle/stack-action@v5
         with:
           stack-build-arguments: --fast # No pedantic for now
 
