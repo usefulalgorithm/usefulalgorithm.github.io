@@ -1,0 +1,57 @@
+name: Create Album Post
+description: Creates a PR to add a new album post to the blog.
+
+on:
+  workflow_dispatch:
+    inputs:
+      album_title:
+        type: string
+        required: true
+        description: Title of the album.
+      artist_name:
+        type: string
+        required: true
+        description: Name of the artist.
+
+jobs:
+  create-branch-and-pr:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Haskell
+        uses: haskell-actions/setup@v2.7.10
+        with:
+          cabal-version: 2.4
+          ghc-version: 9.4.8
+
+      - name: Pull album info
+        id: pull_album_info
+        run: |
+          BRANCH_NAME=$(echo "${{ github.event.inputs.album_title }}-${{ github.event.inputs.artist_name }}" | tr '[:upper:]' '[:lower:]' | tr -cd 'a-z0-9-')
+
+          # Build album template post
+          cd .github/scripts/pull_album_info
+          cabal build
+          cabal run pull-album-info ${{ github.event.inputs.artist_name }} ${{ github.event.inputs.album_title }} $BRANCH_NAME
+          mv $BRANCH_NAME ${{ github.workspace }}/drafts/$BRANCH_NAME
+
+          # Switch to bot account
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+          # Set branch name to output
+          echo "branch_name=$branch_name" >> $GITHUB_OUTPUT
+
+      - name: Create Pull Request
+        id: create_pr
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ steps.pull_album_info.outputs.branch_name }}
+          base: main
+          title: post/${{ steps.pull_album_info.outputs.branch_name }}
+          body-path: '${{ github.workspace }}/drafts/${{ steps.pull_album_info.outputs.branch_name }}'
+          labels: 'post'
