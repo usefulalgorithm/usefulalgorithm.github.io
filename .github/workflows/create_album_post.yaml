@@ -16,6 +16,7 @@ on:
 jobs:
   create-branch-and-pr:
     runs-on: ubuntu-latest
+    environment: deployment
 
     steps:
       - name: Checkout repository
@@ -60,6 +61,9 @@ jobs:
           # Switch to bot account
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+        env:
+          DISCOG_KEY: ${{ secrets.DISCOG_KEY }}
+          DISCOG_SECRET: ${{ secrets.DISCOG_SECRET }}
 
       - name: Create Pull Request
         id: create_pr
