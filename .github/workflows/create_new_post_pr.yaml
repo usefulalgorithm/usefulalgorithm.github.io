@@ -1,5 +1,5 @@
-name: Create New Post PR
-description: Creates a new PR. The PR's body will be used to populate a new post in my blog.
+name: Create Other Post
+description: Creates a PR that isn't an album post to the blog.
 
 on:
   workflow_dispatch:
