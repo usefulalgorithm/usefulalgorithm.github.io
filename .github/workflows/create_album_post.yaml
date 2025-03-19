@@ -27,7 +27,7 @@ jobs:
           path: |
             ~/.cabal/store
             .github/scripts/pull_album_info/dist-newstyle
-          key: haskell-cache-${{ runner.os }}-${{ hashFiles('.github/scripts/pull_album_info/') }}
+          key: haskell-cache-${{ runner.os }}-${{ hashFiles('.github/scripts/pull_album_info/**') }}
           restore-keys: |
             haskell-cache-${{ runner.os }}-
 
