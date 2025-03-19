@@ -55,6 +55,8 @@ jobs:
 
       - name: Run
         run: |
+          cd .github/scripts/pull_album_info
+
           BRANCH_NAME=${{ steps.set_name.outputs.branch_name }}
           cabal run pull-album-info ${{ github.event.inputs.artist_name }} ${{ github.event.inputs.album_title }} $BRANCH_NAME
           mv $BRANCH_NAME ${{ github.workspace }}/drafts/$BRANCH_NAME
