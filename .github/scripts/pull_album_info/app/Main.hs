@@ -13,8 +13,7 @@ import           System.Environment    (getArgs, getProgName, lookupEnv)
 -- Third-party library imports
 import           Control.Lens          (Identity (runIdentity), (^?))
 import           Data.Aeson            (FromJSON (parseJSON), ToJSON,
-                                        Value (Object), decodeStrict, encode,
-                                        (.:))
+                                        Value (Object), decodeStrict, (.:))
 import           Data.Aeson.Lens       (AsNumber (_Integer), key, nth)
 import           Data.ByteString       (ByteString)
 import qualified Data.ByteString.Char8 as BS
@@ -28,6 +27,7 @@ import           System.FilePath       (takeDirectory)
 import           Text.Ginger           (IncludeResolver, SourcePos, Template,
                                         ToGVal (..), dict, easyRender,
                                         parseGinger)
+import Control.Exception (try, SomeException)
 
 -- Data type definitions
 data MainRelease = MainRelease {
@@ -123,25 +123,36 @@ getMainRelease releaseId = do
 nullResolver :: IncludeResolver Identity
 nullResolver = const $ return Nothing
 
--- | This is our template. Because 'parseGinger' wants a monad (as loading
--- includes would normally go through some sort of monadic API like 'IO'), we
--- use 'Identity' here.
 getTemplate :: String -> Template SourcePos
 getTemplate content = either (error . show) id . runIdentity $
   parseGinger nullResolver Nothing content
+
+templatePath :: IO String
+templatePath = do
+  progName <- getProgName
+  return $ takeDirectory progName ++ "/app/templates/post.md"
+
+runGenAlbumPost :: String -> String -> IO String
+runGenAlbumPost artistName albumName = do
+      -- Get the MainRelease of the album
+      release <- getMasterReleaseId artistName albumName
+             >>= getMainReleaseId
+             >>= getMainRelease
+      content <- templatePath >>= readFile
+      return $ T.unpack . easyRender release $ getTemplate content
 
 -- Main function
 main :: IO ()
 main = do
   args <- getArgs
   case args of
-    [artistName, albumName] -> do
-      release <- getMasterReleaseId artistName albumName
-             >>= getMainReleaseId
-             >>= getMainRelease
-      putStrLn $ BS.unpack $ BS.toStrict $ encode release
-      content <- getProgName >>= readFile . (++ "/app/templates/post.md") . takeDirectory
-      let template = getTemplate content
-      let output = T.unpack $ easyRender release template
-      putStrLn output
-    _ -> putStrLn "Usage: pull_album_info <artist_name> <album_name>"
+    [artistName, albumName, branchName] -> do
+      result <- try $ runGenAlbumPost artistName albumName :: IO (Either SomeException String)
+      post <- case result of
+        Left _ -> do
+          _ <- putStrLn "Cannot get album info from Discog, falling back to default post template"
+          templatePath >>= readFile
+        Right output -> return output
+      writeFile branchName post
+      putStrLn "done"
+    _ -> putStrLn "Usage: pull_album_info <artist_name> <album_name> <branch_name>"

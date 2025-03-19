@@ -8,7 +8,7 @@ tags: {{year}}
 ![{{imageUrl}}]({{imageUrl}})
 
 <!--
-Whatever you write here will be the post.
+Write your post here!
 -->
 
 ---
@@ -17,8 +17,6 @@ Fav tracks:
 
 Score: /10
 
-Released: {{released}}
+Release date: {{released}}
 
 Labels: {{labels}}
-
-Bandcamp: []()
