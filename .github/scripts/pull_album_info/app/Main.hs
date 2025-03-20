@@ -1,19 +1,22 @@
 {-# LANGUAGE DeriveGeneric         #-}
 {-# LANGUAGE OverloadedStrings     #-}
-{-# OPTIONS_GHC -Wno-incomplete-patterns #-}
-{-# OPTIONS_GHC -Wno-name-shadowing #-}
 {-# LANGUAGE FlexibleInstances     #-}
 {-# LANGUAGE MultiParamTypeClasses #-}
+{-# OPTIONS_GHC -Wno-incomplete-patterns #-}
+{-# OPTIONS_GHC -Wno-name-shadowing #-}
 
 module Main where
 
 -- Standard library imports
+import           Control.Exception     (SomeException, try)
 import           System.Environment    (getArgs, getProgName, lookupEnv)
+import           System.FilePath       (takeDirectory)
 
 -- Third-party library imports
 import           Control.Lens          (Identity (runIdentity), (^?))
 import           Data.Aeson            (FromJSON (parseJSON), ToJSON,
                                         Value (Object), decodeStrict, (.:))
+import           Data.Aeson.Key        (fromString)
 import           Data.Aeson.Lens       (AsNumber (_Integer), key, nth)
 import           Data.ByteString       (ByteString)
 import qualified Data.ByteString.Char8 as BS
@@ -23,14 +26,12 @@ import           GHC.Generics          (Generic)
 import           Network.HTTP.Simple   (Query, getResponseBody, httpBS,
                                         parseRequest_, setRequestHeader,
                                         setRequestQueryString)
-import           System.FilePath       (takeDirectory)
 import           Text.Ginger           (IncludeResolver, SourcePos, Template,
                                         ToGVal (..), dict, easyRender,
                                         parseGinger)
-import Control.Exception (try, SomeException)
 
 -- Data type definitions
-data MainRelease = MainRelease {
+data Release = Release {
   artists  :: [String],
   title    :: String,
   year     :: Int,
@@ -40,9 +41,9 @@ data MainRelease = MainRelease {
   uri      :: String
 } deriving (Show, Eq, Generic)
 
-instance ToJSON MainRelease
+instance ToJSON Release
 
-instance ToGVal m MainRelease where
+instance ToGVal m Release where
   toGVal release = dict [
       ("artists", toGVal . L.intercalate ", " . artists $ release),
       ("title", toGVal $ title release),
@@ -53,8 +54,7 @@ instance ToGVal m MainRelease where
       ("uri", toGVal $ uri release)
     ]
 
-
-instance FromJSON MainRelease where
+instance FromJSON Release where
   parseJSON (Object v) = do
     artists <- v .: "artists" >>= traverse (.: "name")
     title <- v .: "title"
@@ -66,7 +66,7 @@ instance FromJSON MainRelease where
         []      -> fail "No images found"
     labels <- v .: "labels" >>= traverse (.: "name")
     uri <- v .: "uri"
-    return MainRelease {
+    return Release {
       artists = artists,
       title = title,
       year = year,
@@ -91,35 +91,54 @@ runDiscogsQuery query url = do
         parseRequest_ url
   getResponseBody <$> httpBS request
 
-getMasterReleaseId :: String -> String -> IO String
-getMasterReleaseId artistName albumName = do
+data ReleaseType = Master | Regular deriving (Show)
+
+toQueryParams :: ReleaseType -> (String, String)
+toQueryParams Master  = ("master", "master_id")
+toQueryParams Regular = ("release", "id")
+
+fetchReleaseIdByType :: String -> String -> ReleaseType -> IO String
+fetchReleaseIdByType artistName albumName releaseType = do
   let url = "https://api.discogs.com/database/search"
+      (queryType, queryKey) = toQueryParams releaseType
       query =
         [ ("artist", Just $ BS.pack artistName),
           ("release_title", Just $ BS.pack albumName),
-          ("type", Just "master")
+          ("type", Just $ BS.pack queryType)
         ]
   body <- BS.unpack <$> runDiscogsQuery query url
-  case body ^? key "results" . nth 0 . key "master_id" . _Integer  of
-    Just masterId -> return $ show masterId
-    Nothing       -> fail "Failed to extract master_id from the response"
+  case body ^? key "results" . nth 0 . key (fromString queryKey) . _Integer of
+    Just idValue -> return $ show idValue
+    Nothing      -> fail $ "Failed to extract " ++ queryKey ++ " from the response"
 
-getMainReleaseId :: String -> IO String
-getMainReleaseId masterId = do
+fetchMainReleaseId :: String -> IO String
+fetchMainReleaseId masterId = do
   let url = "https://api.discogs.com/masters/" ++ masterId
   body <- BS.unpack <$> runDiscogsQuery [] url
   case body ^? key "main_release" . _Integer of
     Just mainId -> return $ show mainId
     Nothing     -> fail "Failed to extract main_release from the response"
 
-getMainRelease :: String -> IO MainRelease
-getMainRelease releaseId = do
+-- | Fetches the master release ID. If fetching the master release ID fails,
+-- it falls back to fetching the first item's ID where the type is 'release'.
+-- This ensures that a valid release ID is returned even if the master release
+-- ID is unavailable.
+getReleaseId :: String -> String -> IO String
+getReleaseId artistName albumName = do
+  result <- try (fetchReleaseIdByType artistName albumName Master) :: IO (Either SomeException String)
+  case result of
+    Right masterId -> fetchMainReleaseId masterId
+    Left _         -> fetchReleaseIdByType artistName albumName Regular
+
+getRelease :: String -> IO Release
+getRelease releaseId = do
   let url = "https://api.discogs.com/releases/" ++ releaseId
   body <- runDiscogsQuery [] url
-  case (decodeStrict body :: Maybe MainRelease) of
+  case (decodeStrict body :: Maybe Release) of
     Just release -> return release
     Nothing      -> fail "Cannot decode main release"
 
+-- Template rendering
 nullResolver :: IncludeResolver Identity
 nullResolver = const $ return Nothing
 
@@ -134,12 +153,9 @@ templatePath = do
 
 runGenAlbumPost :: String -> String -> IO String
 runGenAlbumPost artistName albumName = do
-      -- Get the MainRelease of the album
-      release <- getMasterReleaseId artistName albumName
-             >>= getMainReleaseId
-             >>= getMainRelease
-      content <- templatePath >>= readFile
-      return $ T.unpack . easyRender release $ getTemplate content
+  release <- getReleaseId artistName albumName >>= getRelease
+  content <- templatePath >>= readFile
+  return $ T.unpack . easyRender release $ getTemplate content
 
 -- Main function
 main :: IO ()
