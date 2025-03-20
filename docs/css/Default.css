@@ -1,0 +1,268 @@
+
+html
+{
+  font-size   : 62.5%;
+  font-family : "Source Sans Pro","Noto Sans TC", sans-serif;
+}
+
+body
+{
+  font-size        : 1.6rem;
+  color            : #000000;
+  background-color : #f5f5f5;
+}
+
+code
+{
+  padding     : 0px 0.2px 0px 0px;
+  font-family : "Roboto Mono", monospace;
+}
+
+header
+{
+  border-bottom : 0.2rem solid #000000;
+}
+
+nav
+{
+  text-align : right;
+}
+
+nav > a
+{
+  font-size       : 1.8rem;
+  font-weight     : bold;
+  color           : #000000;
+  text-decoration : none;
+  text-transform  : uppercase;
+}
+
+.contacts > a
+{
+  display         : inline-block;
+  margin-top      : 2.4rem;
+  padding         : 0.2px 0.2px 0.2px 0.2px;
+  font-size       : 2.4rem;
+  color           : #555555;
+  text-decoration : none;
+}
+
+footer
+{
+  border-top : 0.2px solid #000000;
+  padding    : 1.2rem 0px 0px 0px;
+  font-size  : 1.2rem;
+  color      : #555555;
+}
+
+img
+{
+  display      : block;
+  margin-left  : auto;
+  margin-right : auto;
+}
+
+h1
+{
+  font-size : 2.4rem;
+}
+
+h2
+{
+  border-top  : 1px solid #e6e6e6;
+  padding-top : 20px;
+  font-size   : 2rem;
+}
+
+h3
+{
+  text-align : left;
+}
+
+article .header
+{
+  font-size  : 1.4rem;
+  font-style : italic;
+  color      : #555555;
+}
+
+.logo > a
+{
+  font-weight     : bold;
+  color           : #000000;
+  text-decoration : none;
+}
+
+@media all and (max-width: 359px)
+{
+
+body
+{
+  width          : 90%;
+  margin         : auto auto auto auto;
+  padding-top    : 0px;
+  padding-right  : 5%;
+  padding-bottom : 0px;
+  padding-left   : 0px;
+}
+
+header
+{
+  margin : 4.2rem 0px 0px 0px;
+}
+
+nav
+{
+  margin     : 0px auto 3rem 0px;
+  text-align : center;
+}
+
+footer
+{
+  text-align : center;
+}
+
+.logo
+{
+  text-align : center;
+  margin     : 1rem auto 3rem 0px;
+}
+
+.logo > a
+{
+  font-size : 2.4rem;
+}
+
+nav > a
+{
+  display     : block;
+  line-height : 1.6rem;
+}
+
+img
+{
+  border : 20px solid none;
+  width  : 200px;
+}
+
+}
+@media all and (min-width: 360px)
+{
+
+body
+{
+  width          : 90%;
+  margin         : auto auto auto auto;
+  padding-top    : 0px;
+  padding-right  : 5%;
+  padding-bottom : 0px;
+  padding-left   : 0px;
+}
+
+header
+{
+  margin : 4.2rem 0px 0px 0px;
+}
+
+nav
+{
+  margin     : 0px auto 3rem 0px;
+  text-align : center;
+}
+
+footer
+{
+  text-align : center;
+}
+
+.logo
+{
+  text-align : center;
+  margin     : 1rem auto 3rem 0px;
+}
+
+.logo > a
+{
+  font-size : 2.4rem;
+}
+
+nav > a
+{
+  display : inline;
+  margin  : 0px 0.6rem 0px 0px;
+}
+
+img
+{
+  border : 40px solid none;
+  width  : 320px;
+}
+
+}
+@media all and (min-width: 640px)
+{
+
+body
+{
+  width   : 60%;
+  margin  : auto auto auto auto;
+  padding : 0px 0px 0px 0px;
+}
+
+header
+{
+  margin  : 0px 0px 3rem 0px;
+  padding : 1.2rem 0px 1.2rem 0px;
+}
+
+nav
+{
+  margin     : 0px 0px 0px 0px;
+  text-align : right;
+}
+
+nav > a
+{
+  margin  : 0px 0px 0px 1.2rem;
+  display : inline;
+}
+
+footer
+{
+  text-align : right;
+}
+
+img
+{
+  border : 40px solid none;
+  width  : 320px;
+}
+
+figcaption
+{
+  text-align : center;
+  margin-top : 18px;
+}
+
+.logo
+{
+  margin     : 0px 0px 0px 0px;
+  text-align : left;
+}
+
+.logo > a
+{
+  float     : left;
+  font-size : 1.8rem;
+}
+
+.comments
+{
+  padding-top : 5px;
+  border-top  : 2px solid #000000;
+  margin-top  : 60px;
+}
+
+}
+
+/* Generated with Clay, http://fvisser.nl/clay */
