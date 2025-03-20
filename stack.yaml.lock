@@ -18,6 +18,20 @@ packages:
       size: 619
   original:
     hackage: lrucache-1.2.0.1@sha256:18fc3d7052012c7ab3cd395160f34b53c5e1ec5379cc45185baf35b90ffadc2e,1254
+- completed:
+    hackage: clay-0.15.0@sha256:71e2c2e1e3599ec62d69487091944bde57722907388ba6ab10604a4fb09f929c,2269
+    pantry-tree:
+      sha256: 8601aaab712e441253bd96a5de5ed49f6be6c7855535d3bc43af21a3dc684567
+      size: 2258
+  original:
+    hackage: clay-0.15.0
+- completed:
+    hackage: pandoc-3.0.1@sha256:b86cff1afae695247ee180ac66769881a4900ea4643c87820a9f653dd06d4cf2,37767
+    pantry-tree:
+      sha256: 4ceae05f232ec6e0a062b36d89da99ad071ef8f498b141ac748c219136b789d3
+      size: 141318
+  original:
+    hackage: pandoc-3.0.1
 snapshots:
 - completed:
     sha256: a81fb3877c4f9031e1325eb3935122e608d80715dc16b586eb11ddbff8671ecd

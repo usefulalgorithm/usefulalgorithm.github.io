@@ -1,8 +1,10 @@
 --------------------------------------------------------------------------------
 {-# LANGUAGE OverloadedStrings #-}
-import           Data.Monoid (mappend)
+import           Data.Monoid              (mappend)
 import           Hakyll
-
+import           Text.Pandoc.Highlighting (Style, breezeDark, styleToCss)
+import           Text.Pandoc.Options      (ReaderOptions (..),
+                                           WriterOptions (..))
 
 --------------------------------------------------------------------------------
 myFeedConfiguration :: FeedConfiguration
@@ -31,15 +33,26 @@ config = defaultConfiguration {
     destinationDirectory = "docs"
 }
 
+pandocCodeStyle :: Style
+pandocCodeStyle = breezeDark
+
+pandocCompiler' :: Compiler (Item String)
+pandocCompiler' =
+  pandocCompilerWith
+    defaultHakyllReaderOptions
+    defaultHakyllWriterOptions
+      { writerHighlightStyle   = Just pandocCodeStyle
+      }
+
 main :: IO ()
 main = hakyllWith config $ do
     match "images/*" $ do
         route   idRoute
         compile copyFileCompiler
 
-    match "css/*" $ do
-        route   idRoute
-        compile compressCssCompiler
+    match "css/*.hs" $ do
+        route   $ setExtension "css"
+        compile $ getResourceString >>= withItemBody (unixFilter "runghc" [])
 
     match (fromList ["about.rst", "blogroll.markdown"]) $ do
         route   $ setExtension "html"
@@ -52,7 +65,7 @@ main = hakyllWith config $ do
 
     match "posts/*" $ do
         route $ setExtension "html"
-        compile $ pandocCompiler
+        compile $ pandocCompiler'
             >>= loadAndApplyTemplate "templates/post.html"    (postCtxWithTags tags)
             >>= saveSnapshot "content"
             >>= loadAndApplyTemplate "templates/default.html" (postCtxWithTags tags)
@@ -96,6 +109,11 @@ main = hakyllWith config $ do
     create ["rss.xml"] $ do
         route idRoute
         compile (feedCompiler renderRss)
+
+    create ["css/syntax.css"] $ do
+        route idRoute
+        compile $ do
+            makeItem $ styleToCss pandocCodeStyle
 
     tagsRules tags $ \tag pattern -> do
         route idRoute
