@@ -1,6 +1,7 @@
 # Stack stuff
 .stack-work/
 _cache/
+dist-newstyle/
 
 .env
 fillin-release-dates/
