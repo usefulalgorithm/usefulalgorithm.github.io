@@ -5,7 +5,7 @@ comments: false
 tags: {{year}}
 ---
 
-![{{imageUrl}}]({{imageUrl}})
+![]({{imageUrl}})
 
 <!--
 Write your post here!
