@@ -2,7 +2,9 @@
 title: {{artists}} - {{title}}
 layout: post
 comments: false
-tags: {{year}}
+score: 
+released: {{released}}
+tags: {{year}}, music
 ---
 
 ![]({{imageUrl}})
