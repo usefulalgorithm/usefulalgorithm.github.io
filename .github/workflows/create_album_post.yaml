@@ -21,47 +21,23 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: Cache Haskell dependencies
-        uses: actions/cache@v4
+      
+      - id: stack
+        uses: freckle/stack-action@v5
         with:
-          path: |
-            ~/.ghcup
-            ~/.cabal/store
-            .github/scripts/pull_album_info/dist-newstyle
-          key: haskell-cache-${{ runner.os }}-${{ hashFiles('.github/scripts/pull_album_info/**') }}
-          restore-keys: |
-            haskell-cache-${{ runner.os }}-
-
-      - name: Setup Haskell
-        uses: haskell-actions/setup@v2.7.10
-        with:
-          ghc-version: 9.4.8
-
-      - name: Build
-        run: |
-          cd .github/scripts/pull_album_info
-          
-          # Build the app
-          cabal build
-
-      - name: Set branch name
-        id: set_name
-        run: |
-          BRANCH_NAME=$(echo "${{ github.event.inputs.album_title }}-${{ github.event.inputs.artist_name }}" | tr '[:upper:]' '[:lower:]' | tr -cd 'a-z0-9-')
-          echo "branch_name=$BRANCH_NAME" >> $GITHUB_OUTPUT
+          stack-build-arguments: --fast # No pedantic for now
 
       - name: Run
+        id: run
         run: |
-          cd .github/scripts/pull_album_info
-
-          BRANCH_NAME=${{ steps.set_name.outputs.branch_name }}
-          cabal run pull-album-info "${{ github.event.inputs.artist_name }}" "${{ github.event.inputs.album_title }}" $BRANCH_NAME
-          mv $BRANCH_NAME ${{ github.workspace }}/drafts/$BRANCH_NAME
+          BRANCH_NAME=$(echo "${{ github.event.inputs.album_title }}-${{ github.event.inputs.artist_name }}" | tr '[:upper:]' '[:lower:]' | tr -cd 'a-z0-9-')
+          stack exec pull-album-info "${{ github.event.inputs.artist_name }}" "${{ github.event.inputs.album_title }}" $BRANCH_NAME
 
           # Switch to bot account
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+          echo "branch_name=$BRANCH_NAME" >> $GITHUB_OUTPUT
         env:
           DISCOG_KEY: ${{ secrets.DISCOG_KEY }}
           DISCOG_SECRET: ${{ secrets.DISCOG_SECRET }}
@@ -71,8 +47,8 @@ jobs:
         uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ steps.set_name.outputs.branch_name }}
+          branch: ${{ steps.run.outputs.branch_name }}
           base: main
-          title: post/${{ steps.set_name.outputs.branch_name }}
-          body-path: '${{ github.workspace }}/drafts/${{ steps.set_name.outputs.branch_name }}'
+          title: post/${{ steps.run.outputs.branch_name }}
+          body-path: '${{ github.workspace }}/drafts/${{ steps.run.outputs.branch_name }}'
           labels: 'post'
