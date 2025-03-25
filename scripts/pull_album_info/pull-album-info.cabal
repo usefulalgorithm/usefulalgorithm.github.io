@@ -71,8 +71,7 @@ executable pull-album-info
                       lens-aeson,
                       lens,
                       ginger,
-                      text,
-                      filepath
+                      text
 
     -- Directories containing source files.
     hs-source-dirs:   app
