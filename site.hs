@@ -2,7 +2,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 import           Data.Monoid              (mappend)
 import           Hakyll
-import           Text.Pandoc.Highlighting (Style, breezeDark, styleToCss)
+import           Text.Pandoc.Highlighting (Style, haddock, styleToCss)
 import           Text.Pandoc.Options      (ReaderOptions (..),
                                            WriterOptions (..))
 
@@ -34,7 +34,7 @@ config = defaultConfiguration {
 }
 
 pandocCodeStyle :: Style
-pandocCodeStyle = breezeDark
+pandocCodeStyle = haddock
 
 pandocCompiler' :: Compiler (Item String)
 pandocCompiler' =

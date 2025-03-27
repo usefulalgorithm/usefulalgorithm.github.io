@@ -7,8 +7,84 @@
         <description><![CDATA[Just a regular good ol fashioned blog feed]]></description>
         <atom:link href="http://usefulalgorithm.github.io/rss.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Mon, 24 Mar 2025 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Tue, 25 Mar 2025 00:00:00 UT</lastBuildDate>
         <item>
+    <title>Using Haskell to generate post template (or, using Haskell in inappropriate places)</title>
+    <link>http://usefulalgorithm.github.io/posts/2025-03-25-pulling-album-info.html</link>
+    <description><![CDATA[<article>
+    <section class="header">
+        Posted on March 25, 2025
+        
+        <br>
+        
+        Tags: <a title="All pages tagged &#39;about this blog&#39;." href="/tags/about%20this%20blog.html" rel="tag">about this blog</a>, <a title="All pages tagged &#39;haskell&#39;." href="/tags/haskell.html" rel="tag">haskell</a>
+        
+    </section>
+    <section>
+        <p>我前陣子太閒，就想要自動地在我執行 Github workflow 的時候去觸發一個腳本，從一些網路上的資料庫抓我想要寫的專輯的相關資料。一般來說，做這種事情通常是直接用 Python 或是 Bash script + <code>jq</code> 之類的，又簡單又好懂，不過我天生喜歡瞎忙，想說既然都在用 Haskell 了，不如也來用 Haskell 寫這腳本。事實證明真的是比用 Python 麻煩很多…</p>
+<h3 id="從哪裡抓專輯資料">從哪裡抓專輯資料？</h3>
+<p>我本來以為可以從 Bandcamp 去拉，但我寫信去要 API key 時，得到的回覆是沒有公開 API 可以拿到某張專輯的資訊。網上有一些專案好像可以不用爬蟲不用 API key 去拿到專輯資訊，不過看起來有點醜，就覺得算了。最後決定直接從 <a href="https://www.discogs.com/developers">Discogs</a> 上面抓。做法是先用 <code>search</code> 找到某張專輯的 <a href="https://support.discogs.com/hc/en-us/articles/360005055493-Database-Guidelines-16-Master-Release">master release</a>，拿到 master release 的 id，再用這個 id 去查找專輯的發行日期、廠牌跟封面。如果這張專輯太冷門，根本沒有 master release 的話，那麼就直接挑第一個 release，用它的 id 去拿我要的資訊。</p>
+<h3 id="用-haskell-解析-json-資料">用 Haskell 解析 JSON 資料</h3>
+<p>處理 JSON 資料時，Haskell 通常用 <a href="https://hackage.haskell.org/package/aeson">aeson</a>。使用方式是先定義一個資料結構：</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Release</span> <span class="ot">=</span> <span class="dt">Release</span> {</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ot">  artists  ::</span> [<span class="dt">String</span>],</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ot">  title    ::</span> <span class="dt">String</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ot">  year     ::</span> <span class="dt">Int</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ot">  released ::</span> <span class="dt">String</span>,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ot">  imageUrl ::</span> <span class="dt">String</span>,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="ot">  labels   ::</span> [<span class="dt">String</span>],</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ot">  uri      ::</span> <span class="dt">String</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>} <span class="kw">deriving</span> (<span class="dt">Show</span>, <span class="dt">Eq</span>, <span class="dt">Generic</span>)</span></code></pre></div>
+<p>接著實作 <code>ToJSON</code> 和 <code>FromJSON</code>。<code>ToJSON</code> 很簡單，直接把資料結構轉成 JSON 格式；<code>FromJSON</code> 就麻煩多了，得詳細定義如何把 JSON 轉成資料結構：</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> <span class="dt">ToJSON</span> <span class="dt">Release</span> <span class="co">-- 無腦轉</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> <span class="dt">FromJSON</span> <span class="dt">Release</span> <span class="kw">where</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  parseJSON (<span class="dt">Object</span> v) <span class="ot">=</span> <span class="kw">do</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    artists <span class="ot">&lt;-</span> v <span class="op">.:</span> <span class="st">&quot;artists&quot;</span> <span class="op">&gt;&gt;=</span> <span class="fu">traverse</span> (<span class="op">.:</span> <span class="st">&quot;name&quot;</span>) <span class="co">-- &quot;artists&quot; 是個陣列，這裡的意思是取出陣列中每個元素的 &quot;name&quot;</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    title <span class="ot">&lt;-</span> v <span class="op">.:</span> <span class="st">&quot;title&quot;</span> <span class="co">-- .: 表示從 v 中取出 &quot;title&quot; 的值</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    year <span class="ot">&lt;-</span> v <span class="op">.:</span> <span class="st">&quot;year&quot;</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    released <span class="ot">&lt;-</span> v <span class="op">.:</span> <span class="st">&quot;released&quot;</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    images <span class="ot">&lt;-</span> v <span class="op">.:</span> <span class="st">&quot;images&quot;</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    imageUrl <span class="ot">&lt;-</span> <span class="kw">case</span> images <span class="kw">of</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>        (img<span class="op">:</span>_) <span class="ot">-&gt;</span> img <span class="op">.:</span> <span class="st">&quot;resource_url&quot;</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>        []      <span class="ot">-&gt;</span> <span class="fu">fail</span> <span class="st">&quot;No images found&quot;</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    labels <span class="ot">&lt;-</span> v <span class="op">.:</span> <span class="st">&quot;labels&quot;</span> <span class="op">&gt;&gt;=</span> <span class="fu">traverse</span> (<span class="op">.:</span> <span class="st">&quot;name&quot;</span>)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    uri <span class="ot">&lt;-</span> v <span class="op">.:</span> <span class="st">&quot;uri&quot;</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span> <span class="dt">Release</span> {</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>      artists <span class="ot">=</span> artists,</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>      title <span class="ot">=</span> title,</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>      year <span class="ot">=</span> year,</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>      released <span class="ot">=</span> released,</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>      imageUrl <span class="ot">=</span> imageUrl,</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>      labels <span class="ot">=</span> labels,</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>      uri <span class="ot">=</span> uri</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    }</span></code></pre></div>
+<p>可以看出來，如果資料結構很複雜，解析起來就得定義一堆結構來對應。用 Python 的話，這有點像寫一堆 Pydantic class，但每個 class 都得自己實作 <code>decode</code>。</p>
+<p>另一個麻煩點是，當你只想取一個深層的值時，Haskell 就有點麻煩了。對比下面兩行程式碼：</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>body <span class="op">^?</span> key <span class="st">&quot;results&quot;</span> <span class="op">.</span> nth <span class="dv">0</span> <span class="op">.</span> key (fromString queryKey) <span class="op">.</span> _Integer</span></code></pre></div>
+<p>跟</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">int</span>(body[<span class="st">&quot;results&quot;</span>][<span class="dv">0</span>][queryKey])</span></code></pre></div>
+<p>可能我很淺？但我覺得 Python 的好讀多了。另外如果要在 Haskell 做這種操作，需要引入 <a href="https://hackage.haskell.org/package/lens-aeson">lens-aeson</a> 套件，原生是不支援的。</p>
+<h3 id="套件管理">套件管理</h3>
+<p>Haskell 的套件管理工具有 cabal 和 stack，感覺有點像 pip 和 poetry，但功能重疊得更多。</p>
+<h3 id="在-github-workflow-裡執行-haskell-程式">在 Github workflow 裡執行 Haskell 程式</h3>
+<p>如果每次在 workflow 裡面跑的時候都要重新 <code>stack build</code> （可以想像就是 <code>make build</code>）的話會花很多時間，實測下來大概需要二十分鐘左右。真的是太久了… 幸好有個專案就是在做 <a href="https://github.com/freckle/stack-action/tree/v5/">stack action</a>，快取做得蠻好的，所以其實只有第一次提交有改到 Haskell code 的改動時會需要去把整包編好，其他時候就直接用快取的執行檔，那這大概一分鐘之內就能做完。</p>
+<h3 id="結論">結論</h3>
+<p>還是用 Python 做這種事情會比較快：</p>
+<ul>
+<li>比較多人用：Discogs 有提供 Python SDK，甚至不用自己解析 API response。</li>
+<li>Github workflow 設定起來比較不麻煩，而且不會需要花老半天編譯</li>
+<li>JSON support</li>
+</ul>
+<p>不過如果你時間很多的話也是個不錯的體驗啦… 所有的程式碼都在 <a href="https://github.com/usefulalgorithm/usefulalgorithm.github.io/tree/main/scripts/pull_album_info">這裡</a>。</p>
+    </section>
+</article>
+]]></description>
+    <pubDate>Tue, 25 Mar 2025 00:00:00 UT</pubDate>
+    <guid>http://usefulalgorithm.github.io/posts/2025-03-25-pulling-album-info.html</guid>
+    <dc:creator>Tsung-Ju Lii</dc:creator>
+</item>
+<item>
     <title>Zaumne - Only Good Dreams For Me</title>
     <link>http://usefulalgorithm.github.io/posts/2025-03-24-onlygooddreamsforme-zaumne.html</link>
     <description><![CDATA[<article>
@@ -265,48 +341,6 @@
 ]]></description>
     <pubDate>Wed, 05 Mar 2025 00:00:00 UT</pubDate>
     <guid>http://usefulalgorithm.github.io/posts/2025-03-05-ghais-guevara-goyard-ibn-said.html</guid>
-    <dc:creator>Tsung-Ju Lii</dc:creator>
-</item>
-<item>
-    <title>Restructured and Added Some Automation for This Blog</title>
-    <link>http://usefulalgorithm.github.io/posts/2025-02-27-restructured-and-automated.html</link>
-    <description><![CDATA[<article>
-    <section class="header">
-        Posted on February 27, 2025
-        
-        <br>
-        
-        Tags: <a title="All pages tagged &#39;about this blog&#39;." href="/tags/about%20this%20blog.html" rel="tag">about this blog</a>
-        
-    </section>
-    <section>
-        <p>I have been avoiding changing things up in this blog even though I really should have done this a long time ago. There were several things I did not like so much about it:</p>
-<h3 id="having-to-have-a-working-haskell-environment">Having to Have a Working Haskell Environment</h3>
-<p>To actually generate the site, I needed to do the following:</p>
-<ul>
-<li><code>stack build</code> - this builds the executable called <code>site</code> that consumes content in <code>posts/</code> and churns out HTML files.</li>
-<li><code>stack exec site build</code> - this runs the <code>site</code> executable and builds the HTML files, which are stored in <code>_site/</code>.</li>
-</ul>
-<p>Since everything is built offline, a working Haskell environment was necessary.</p>
-<h3 id="lots-of-manual-steps">Lots of Manual Steps</h3>
-<p>As stated above, since the generated HTML files are in <code>_site/</code>, I needed to find a way to get GH pages to host them. The way I did it was to have <a href="https://github.com/usefulalgorithm/old-website">another separate repo</a>, make sure <code>_site/</code> is pointing to that repo, then run <code>stack exec site build</code>, check that things are generated correctly in <code>_site</code>, and finally push to both this repo and the actual GH pages repo.</p>
-<hr />
-<p>Now that I’m not employed and have some free time, I decided it was finally time to make it more usable and generally encourage myself to post more often. Here’s what I did:</p>
-<h3 id="deprecate-the-old-gh-pages-repo-and-just-use-this-one">Deprecate the Old GH Pages Repo and Just Use This One</h3>
-<p>This should be quite obvious - there’s a <a href="https://jaspervdj.be/hakyll/tutorials/github-pages-tutorial.html">tutorial</a> that tells you how to change your executable’s target directory from <code>_site/</code> to <code>docs/</code>. I can just ditch the old repo, rename the Haskell repo to <code>usefulalgorithm.github.io</code>, and have its page deployed from <code>docs/</code> in the main branch. I’m pretty sure the directory has to be called <code>docs/</code> and not anything else though.</p>
-<h3 id="build-deploy-from-gh-actions">Build &amp; Deploy from GH Actions</h3>
-<p>I’ve done a bunch of GH actions in my previous job and found them to be a huge time saver. So what I wanted to do is just update Markdown files in <code>posts/</code>, and then trigger the Haskell commands from within the action runner.</p>
-<hr />
-<p>Some things I hope to do in the near future. These aren’t hard in themselves but probably require a little bit more consideration.</p>
-<h3 id="post-via-prs">Post via PRs</h3>
-<p>Writing Markdown files is still a little annoying, especially when I’m on my phone and just want to post something to my blog. I want to find a way to create posts through pull requests, but I need to think about where to put things like tags and how to format the pull request message into a proper Markdown file.</p>
-<h3 id="repost-to-threads-and-possibly-other-platforms">Repost to Threads (and Possibly Other Platforms)</h3>
-<p>More often than not, I would repost the published post to my socials. I know social media is like the worst thing that’s happened in 20 years, but I still want people to read what I have to say.</p>
-    </section>
-</article>
-]]></description>
-    <pubDate>Thu, 27 Feb 2025 00:00:00 UT</pubDate>
-    <guid>http://usefulalgorithm.github.io/posts/2025-02-27-restructured-and-automated.html</guid>
     <dc:creator>Tsung-Ju Lii</dc:creator>
 </item>
 

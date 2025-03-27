@@ -9,8 +9,7 @@ module Main where
 
 -- Standard library imports
 import           Control.Exception     (SomeException, try)
-import           System.Environment    (getArgs, getProgName, lookupEnv)
-import           System.FilePath       (takeDirectory)
+import           System.Environment    (getArgs, lookupEnv)
 
 -- Third-party library imports
 import           Control.Lens          (Identity (runIdentity), (^?))
@@ -146,15 +145,16 @@ getTemplate :: String -> Template SourcePos
 getTemplate content = either (error . show) id . runIdentity $
   parseGinger nullResolver Nothing content
 
-templatePath :: IO String
-templatePath = do
-  progName <- getProgName
-  return $ takeDirectory progName ++ "/app/templates/post.md"
+templatePath :: String
+templatePath = "scripts/pull_album_info/app/templates/post.md"
+
+getDraftPath :: String -> String
+getDraftPath fileName = "drafts/" ++ fileName
 
 runGenAlbumPost :: String -> String -> IO String
 runGenAlbumPost artistName albumName = do
   release <- getReleaseId artistName albumName >>= getRelease
-  content <- templatePath >>= readFile
+  content <- readFile templatePath
   return $ T.unpack . easyRender release $ getTemplate content
 
 -- Main function
@@ -165,10 +165,12 @@ main = do
     [artistName, albumName, branchName] -> do
       result <- try $ runGenAlbumPost artistName albumName :: IO (Either SomeException String)
       post <- case result of
-        Left _ -> do
-          _ <- putStrLn "Cannot get album info from Discog, falling back to default post template"
-          templatePath >>= readFile
+        Left ex -> do
+          print ex
+          putStrLn "Cannot get album info from Discog, falling back to default post template"
+          readFile templatePath
         Right output -> return output
-      writeFile branchName post
+      let targetName = getDraftPath branchName
+      writeFile targetName post
       putStrLn "done"
     _ -> putStrLn "Usage: pull_album_info <artist_name> <album_name> <branch_name>"
