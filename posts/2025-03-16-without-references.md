@@ -2,6 +2,8 @@
 title: goat (jp) - Without References
 layout: post
 comments: false
+score: 8.3
+released: 2025-03-14
 tags: 2025, experimental, music
 ---
 

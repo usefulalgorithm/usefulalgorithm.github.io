@@ -2,7 +2,9 @@
 title: Lina Tullgren - Decide Which Way The Eyes Are Looking
 layout: post
 comments: false
-tags: 2025, indie pop, folk
+score: 8.6
+released: 2025-02-07
+tags: 2025, indie pop, folk, music
 ---
 
 ![](https://i.discogs.com/SxnLXMPi1YRe5UGX599slUrDUh7o5VVwPRBeYGAAiwc/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTMzNDIy/Njc4LTE3NDIwOTcy/OTUtNTM0My5qcGVn.jpeg)

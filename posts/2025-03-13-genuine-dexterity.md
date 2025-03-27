@@ -2,6 +2,8 @@
 title: Kenny Segal & K-the-I??? - Genuine Dexterity
 layout: post
 comments: false
+score: 6.1
+released: 2024-12-06
 tags: 2025, rap, abstract hip-hop, music
 ---
 

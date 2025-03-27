@@ -2,7 +2,9 @@
 title: Zaumne - Only Good Dreams For Me
 layout: post
 comments: false
-tags: 2024, hypnagogic pop, ambient
+score: 8.3
+released: 2024-11-15
+tags: 2024, music, hypnagogic pop, ambient
 ---
 
 ![](https://i.discogs.com/Fc28-3sNBhCtEC0TSjH0GUrv2r0BwimAbgLy4khYO6c/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTMyNTU3/OTg2LTE3MzQxMjEw/MzMtODY4NS5qcGVn.jpeg)

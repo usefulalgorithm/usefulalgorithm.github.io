@@ -2,6 +2,8 @@
 title: Richard Dawson - End of the Middle
 layout: post
 comments: false
+score: 8.5
+released: 2025-02-14
 tags: 2025, music, folk, weird folk
 ---
 

@@ -2,6 +2,8 @@
 title: Saffron Bloom - Saffron Bloom
 layout: post
 comments: false
+score: 6.5
+released: 2025-02-28
 tags: music, 2025, trip hop
 ---
 

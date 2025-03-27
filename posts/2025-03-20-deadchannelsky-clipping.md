@@ -2,7 +2,9 @@
 title: Clipping. - Dead Channel Sky
 layout: post
 comments: false
-tags: 2025
+score: 6.1
+released: 2025-03-14
+tags: 2025, experimental hip-hop, rap, music
 ---
 
 ![](https://i.discogs.com/fR7sQlLkPLDHsta3TrDNN2PO-fO4T_eSMiEdCpXEH1o/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTMzMzk1/MjU1LTE3NDE4Njgx/NTUtNTYwOC5qcGVn.jpeg)

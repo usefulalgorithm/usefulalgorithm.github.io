@@ -2,6 +2,8 @@
 title: Ghais Guevara - Goyard Ibn Said
 layout: post
 comments: false
+score: 8.0
+released: 2025-01-24
 tags: music, rap, conscious hip-hop, 2025
 ---
 
