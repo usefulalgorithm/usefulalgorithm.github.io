@@ -1,6 +1,7 @@
 cradle:
   stack:
-    - path: "site.hs"
+    - path: "././site.hs"
       component: "my-site:exe:site"
-    - path: "css/Default.hs"
-      component: "my-site:exe:site"
+
+    - path: "scripts/pull_album_info/app/Main.hs"
+      component: "pull-album-info:exe:pull-album-info"
