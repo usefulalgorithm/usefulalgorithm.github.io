@@ -6,7 +6,7 @@ on:
   schedule:
     - cron: '0 0 1 * *'
 jobs:
-  create-branch-and-pr:
+  monthly-album-digest:
     runs-on: ubuntu-latest
     environment: deployment
 
@@ -21,7 +21,10 @@ jobs:
 
       - id: run
         name: Run
-        run: echo "text=$(stack exec monthly-rewind)" >> $GITHUB_OUTPUT
+        run: |
+          echo 'text<<EOF' >> $GITHUB_OUTPUT
+          stack exec monthly-rewind >> $GITHUB_OUTPUT
+          echo 'EOF' >> $GITHUB_OUTPUT
 
       - name: Send Email
         id: send_email
