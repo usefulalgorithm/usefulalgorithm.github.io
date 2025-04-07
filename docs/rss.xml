@@ -7,8 +7,35 @@
         <description><![CDATA[Just a regular good ol fashioned blog feed]]></description>
         <atom:link href="http://usefulalgorithm.github.io/rss.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Tue, 01 Apr 2025 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Mon, 07 Apr 2025 00:00:00 UT</lastBuildDate>
         <item>
+    <title>Memotone - Pruning</title>
+    <link>http://usefulalgorithm.github.io/posts/2025-04-07-pruning-memotone.html</link>
+    <description><![CDATA[<article>
+    <section class="header">
+        Posted on April  7, 2025
+        
+        <br>
+        
+        Tags: <a title="All pages tagged &#39;2025&#39;." href="/tags/2025.html" rel="tag">2025</a>, <a title="All pages tagged &#39;music&#39;." href="/tags/music.html" rel="tag">music</a>, <a title="All pages tagged &#39;ambient&#39;." href="/tags/ambient.html" rel="tag">ambient</a>, <a title="All pages tagged &#39;electronic&#39;." href="/tags/electronic.html" rel="tag">electronic</a>, <a title="All pages tagged &#39;IDM&#39;." href="/tags/IDM.html" rel="tag">IDM</a>
+        
+    </section>
+    <section>
+        <p><img src="https://i.discogs.com/H4OnIGbhrHU1dpZ6ZwKLCHUz11vPJtMJZRN8T5QtAWo/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTMzNDkz/OTM0LTE3NDI3NTc0/NzktNTA2NS5qcGVn.jpeg" /></p>
+<p>蠻酷的 ambient jazz。前面三首歌感覺有點像 Shackleton 那種 dub 感，但從第四首 “Not What I Thought” 開始之後就變得比較 fourth world / jazz fusion 一點，但相對地氣氛感沒有那麼強，我也比較沒那麼喜歡。 “Wisdom (MOTHER)” 我猜如果是喜歡 Actress 的人應該會覺得不錯。整體來說還行，但後面就有點不夠帶勁。</p>
+<hr />
+<p>Fav tracks: Weird Figures, Riders, Wisdom (MOTHER)</p>
+<p>Score: 7.4/10</p>
+<p>Release date: 2025-03-14</p>
+<p>Labels: Discrepant</p>
+    </section>
+</article>
+]]></description>
+    <pubDate>Mon, 07 Apr 2025 00:00:00 UT</pubDate>
+    <guid>http://usefulalgorithm.github.io/posts/2025-04-07-pruning-memotone.html</guid>
+    <dc:creator>Tsung-Ju Lii</dc:creator>
+</item>
+<item>
     <title>Jefre Cantu-Ledesma - Gift Songs</title>
     <link>http://usefulalgorithm.github.io/posts/2025-04-01-giftsongs-jefrecantu-ledesma.html</link>
     <description><![CDATA[<article>
@@ -312,32 +339,6 @@
 ]]></description>
     <pubDate>Thu, 13 Mar 2025 00:00:00 UT</pubDate>
     <guid>http://usefulalgorithm.github.io/posts/2025-03-13-genuine-dexterity.html</guid>
-    <dc:creator>Tsung-Ju Lii</dc:creator>
-</item>
-<item>
-    <title>Downy - 第八作品集『無題』</title>
-    <link>http://usefulalgorithm.github.io/posts/2025-03-11-downy-8.html</link>
-    <description><![CDATA[<article>
-    <section class="header">
-        Posted on March 11, 2025
-        
-        <br>
-        
-        Tags: <a title="All pages tagged &#39;2025&#39;." href="/tags/2025.html" rel="tag">2025</a>, <a title="All pages tagged &#39;music&#39;." href="/tags/music.html" rel="tag">music</a>, <a title="All pages tagged &#39;post-rock&#39;." href="/tags/post-rock.html" rel="tag">post-rock</a>, <a title="All pages tagged &#39;math-rock&#39;." href="/tags/math-rock.html" rel="tag">math-rock</a>
-        
-    </section>
-    <section>
-        <p><img src="https://f4.bcbits.com/img/a0885174281_16.jpg" /></p>
-<p>這張專輯是他們至今讓我最無感的一張。我一直喜歡 Downy 善於運用奇特節拍和獨特樂句來營造詭譎的空間感，讓音樂自然推進而不顯得刻意。然而，這次的專輯中，各個段落之間最多只是簡單地堆疊樂器，整體感覺像是把幾個不算特別有趣的 musical idea 稍作發展後就結束了。混音師是來自 toe 的美濃隆章，不過我覺得樂器的音色選擇有些奇怪（其實也不意外，toe 近期的作品我是真的一點愛都沒有）。一旦合成器開始演奏一些頻率與吉他接近、且較有旋律性的段落，吉他的聲音就變得難以辨識。</p>
-<hr />
-<p>Fav track: 剥離の窓</p>
-<p>Score: 6.1/10</p>
-<p>Bandcamp: <a href="https://downy.bandcamp.com/album/8th-album-untitled">https://downy.bandcamp.com/album/8th-album-untitled</a></p>
-    </section>
-</article>
-]]></description>
-    <pubDate>Tue, 11 Mar 2025 00:00:00 UT</pubDate>
-    <guid>http://usefulalgorithm.github.io/posts/2025-03-11-downy-8.html</guid>
     <dc:creator>Tsung-Ju Lii</dc:creator>
 </item>
 
