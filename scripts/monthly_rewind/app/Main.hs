@@ -105,4 +105,3 @@ main = do
         , Bucket midScores Ok
         , Bucket lowScores Wack
         ]
-    -- TODO: send this as an email? save it as a new post? just run it every month and then collect it somehow?
