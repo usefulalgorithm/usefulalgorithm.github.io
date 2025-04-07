@@ -20,8 +20,11 @@ jobs:
           stack-build-arguments: --fast # No pedantic for now
 
       - id: run
+        name: Run
         run: echo "text=$(stack exec monthly-rewind)" >> $GITHUB_OUTPUT
+
       - name: Send Email
+        id: send_email
         run: |
           curl -s --user 'api:${{ secrets.MAILGUN_API_KEY }}' \
           https://api.mailgun.net/v3/${{ secrets.MAILGUN_SERVER }}/messages \
