@@ -1,0 +1,33 @@
+name: Monthly Album Digest
+description: Creates an album digest from last month, and send it to my email.
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 1 * *'
+jobs:
+  create-branch-and-pr:
+    runs-on: ubuntu-latest
+    environment: deployment
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - id: stack
+        uses: freckle/stack-action@v5
+        with:
+          stack-build-arguments: --fast # No pedantic for now
+
+      - id: run
+        run: echo "text=$(stack exec monthly-rewind)"" >> $GITHUB_OUTPUT
+
+      - name: Send Email
+        run: |
+          curl -s --user 'api:${{ secrets.MAILGUN_API_KEY }}' \
+          https://api.mailgun.net/v3/${{ secrets.MAILGUN_SERVER }}/messages \
+          -F from='Mailgun Sandbox <postmaster@${{ secrets.MAILGUN_SERVER }}>' \
+          -F to='Tsung-Ju Lii <usefulalgorithm@gmail.com>' \
+          -F subject='Monthly Digest' \
+          -F text='${{ steps.run.outputs.text }}'
+
