@@ -3,5 +3,8 @@ cradle:
     - path: "././site.hs"
       component: "my-site:exe:site"
 
+    - path: "scripts/monthly_rewind/app/Main.hs"
+      component: "monthly-rewind:exe:monthly-rewind"
+
     - path: "scripts/pull_album_info/app/Main.hs"
       component: "pull-album-info:exe:pull-album-info"
