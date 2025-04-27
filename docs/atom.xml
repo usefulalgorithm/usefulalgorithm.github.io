@@ -10,8 +10,35 @@
         <email>usefulalgorithm@gmail.com</email>
         
     </author>
-    <updated>2025-04-23T00:00:00Z</updated>
+    <updated>2025-04-27T00:00:00Z</updated>
     <entry>
+    <title>Civilistjävel - Följd</title>
+    <link href="http://usefulalgorithm.github.io/posts/2025-04-27-fljd-civilistjvel.html" />
+    <id>http://usefulalgorithm.github.io/posts/2025-04-27-fljd-civilistjvel.html</id>
+    <published>2025-04-27T00:00:00Z</published>
+    <updated>2025-04-27T00:00:00Z</updated>
+    <summary type="html"><![CDATA[<article>
+    <section class="header">
+        Posted on April 27, 2025
+        
+        <br>
+        
+        Tags: <a title="All pages tagged &#39;2025&#39;." href="/tags/2025.html" rel="tag">2025</a>, <a title="All pages tagged &#39;music&#39;." href="/tags/music.html" rel="tag">music</a>, <a title="All pages tagged &#39;ambient， dub techno&#39;." href="/tags/ambient%EF%BC%8C%20dub%20techno.html" rel="tag">ambient， dub techno</a>
+        
+    </section>
+    <section>
+        <p><img src="https://f4.bcbits.com/img/a2320697940_10.jpg" /></p>
+<p>去年他發的 <em>Brödföda</em> 我很喜歡，這張則是它的續作，風格上更極簡一點。也有更多 dub techno 歌，像十分鐘的 “XVI” 就很讚。</p>
+<hr />
+<p>Fav tracks: XIV, XVI, XVII
+Score: 8.1/10</p>
+<p>Release date: 2025-02-14</p>
+<p>Labels: Rubadub</p>
+    </section>
+</article>
+]]></summary>
+</entry>
+<entry>
     <title>Barker - Stochastic Drift</title>
     <link href="http://usefulalgorithm.github.io/posts/2025-04-23-stochasticdrift-barker.html" />
     <id>http://usefulalgorithm.github.io/posts/2025-04-23-stochasticdrift-barker.html</id>
@@ -251,82 +278,6 @@
 <p>Score: 8.1/10</p>
 <p>Release date: 2024-11-21</p>
 <p>Labels: topo2</p>
-    </section>
-</article>
-]]></summary>
-</entry>
-<entry>
-    <title>Using Haskell to generate post template (or, using Haskell in inappropriate places)</title>
-    <link href="http://usefulalgorithm.github.io/posts/2025-03-25-pulling-album-info.html" />
-    <id>http://usefulalgorithm.github.io/posts/2025-03-25-pulling-album-info.html</id>
-    <published>2025-03-25T00:00:00Z</published>
-    <updated>2025-03-25T00:00:00Z</updated>
-    <summary type="html"><![CDATA[<article>
-    <section class="header">
-        Posted on March 25, 2025
-        
-        <br>
-        
-        Tags: <a title="All pages tagged &#39;about this blog&#39;." href="/tags/about%20this%20blog.html" rel="tag">about this blog</a>, <a title="All pages tagged &#39;haskell&#39;." href="/tags/haskell.html" rel="tag">haskell</a>
-        
-    </section>
-    <section>
-        <p>我前陣子太閒，就想要自動地在我執行 Github workflow 的時候去觸發一個腳本，從一些網路上的資料庫抓我想要寫的專輯的相關資料。一般來說，做這種事情通常是直接用 Python 或是 Bash script + <code>jq</code> 之類的，又簡單又好懂，不過我天生喜歡瞎忙，想說既然都在用 Haskell 了，不如也來用 Haskell 寫這腳本。事實證明真的是比用 Python 麻煩很多…</p>
-<h3 id="從哪裡抓專輯資料">從哪裡抓專輯資料？</h3>
-<p>我本來以為可以從 Bandcamp 去拉，但我寫信去要 API key 時，得到的回覆是沒有公開 API 可以拿到某張專輯的資訊。網上有一些專案好像可以不用爬蟲不用 API key 去拿到專輯資訊，不過看起來有點醜，就覺得算了。最後決定直接從 <a href="https://www.discogs.com/developers">Discogs</a> 上面抓。做法是先用 <code>search</code> 找到某張專輯的 <a href="https://support.discogs.com/hc/en-us/articles/360005055493-Database-Guidelines-16-Master-Release">master release</a>，拿到 master release 的 id，再用這個 id 去查找專輯的發行日期、廠牌跟封面。如果這張專輯太冷門，根本沒有 master release 的話，那麼就直接挑第一個 release，用它的 id 去拿我要的資訊。</p>
-<h3 id="用-haskell-解析-json-資料">用 Haskell 解析 JSON 資料</h3>
-<p>處理 JSON 資料時，Haskell 通常用 <a href="https://hackage.haskell.org/package/aeson">aeson</a>。使用方式是先定義一個資料結構：</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Release</span> <span class="ot">=</span> <span class="dt">Release</span> {</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ot">  artists  ::</span> [<span class="dt">String</span>],</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ot">  title    ::</span> <span class="dt">String</span>,</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ot">  year     ::</span> <span class="dt">Int</span>,</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ot">  released ::</span> <span class="dt">String</span>,</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ot">  imageUrl ::</span> <span class="dt">String</span>,</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="ot">  labels   ::</span> [<span class="dt">String</span>],</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ot">  uri      ::</span> <span class="dt">String</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>} <span class="kw">deriving</span> (<span class="dt">Show</span>, <span class="dt">Eq</span>, <span class="dt">Generic</span>)</span></code></pre></div>
-<p>接著實作 <code>ToJSON</code> 和 <code>FromJSON</code>。<code>ToJSON</code> 很簡單，直接把資料結構轉成 JSON 格式；<code>FromJSON</code> 就麻煩多了，得詳細定義如何把 JSON 轉成資料結構：</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> <span class="dt">ToJSON</span> <span class="dt">Release</span> <span class="co">-- 無腦轉</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> <span class="dt">FromJSON</span> <span class="dt">Release</span> <span class="kw">where</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  parseJSON (<span class="dt">Object</span> v) <span class="ot">=</span> <span class="kw">do</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    artists <span class="ot">&lt;-</span> v <span class="op">.:</span> <span class="st">&quot;artists&quot;</span> <span class="op">&gt;&gt;=</span> <span class="fu">traverse</span> (<span class="op">.:</span> <span class="st">&quot;name&quot;</span>) <span class="co">-- &quot;artists&quot; 是個陣列，這裡的意思是取出陣列中每個元素的 &quot;name&quot;</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    title <span class="ot">&lt;-</span> v <span class="op">.:</span> <span class="st">&quot;title&quot;</span> <span class="co">-- .: 表示從 v 中取出 &quot;title&quot; 的值</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    year <span class="ot">&lt;-</span> v <span class="op">.:</span> <span class="st">&quot;year&quot;</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    released <span class="ot">&lt;-</span> v <span class="op">.:</span> <span class="st">&quot;released&quot;</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    images <span class="ot">&lt;-</span> v <span class="op">.:</span> <span class="st">&quot;images&quot;</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    imageUrl <span class="ot">&lt;-</span> <span class="kw">case</span> images <span class="kw">of</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>        (img<span class="op">:</span>_) <span class="ot">-&gt;</span> img <span class="op">.:</span> <span class="st">&quot;resource_url&quot;</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>        []      <span class="ot">-&gt;</span> <span class="fu">fail</span> <span class="st">&quot;No images found&quot;</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    labels <span class="ot">&lt;-</span> v <span class="op">.:</span> <span class="st">&quot;labels&quot;</span> <span class="op">&gt;&gt;=</span> <span class="fu">traverse</span> (<span class="op">.:</span> <span class="st">&quot;name&quot;</span>)</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    uri <span class="ot">&lt;-</span> v <span class="op">.:</span> <span class="st">&quot;uri&quot;</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span> <span class="dt">Release</span> {</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>      artists <span class="ot">=</span> artists,</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>      title <span class="ot">=</span> title,</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>      year <span class="ot">=</span> year,</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>      released <span class="ot">=</span> released,</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>      imageUrl <span class="ot">=</span> imageUrl,</span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>      labels <span class="ot">=</span> labels,</span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>      uri <span class="ot">=</span> uri</span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    }</span></code></pre></div>
-<p>可以看出來，如果資料結構很複雜，解析起來就得定義一堆結構來對應。用 Python 的話，這有點像寫一堆 Pydantic class，但每個 class 都得自己實作 <code>decode</code>。</p>
-<p>另一個麻煩點是，當你只想取一個深層的值時，Haskell 就有點麻煩了。對比下面兩行程式碼：</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>body <span class="op">^?</span> key <span class="st">&quot;results&quot;</span> <span class="op">.</span> nth <span class="dv">0</span> <span class="op">.</span> key (fromString queryKey) <span class="op">.</span> _Integer</span></code></pre></div>
-<p>跟</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">int</span>(body[<span class="st">&quot;results&quot;</span>][<span class="dv">0</span>][queryKey])</span></code></pre></div>
-<p>可能我很淺？但我覺得 Python 的好讀多了。另外如果要在 Haskell 做這種操作，需要引入 <a href="https://hackage.haskell.org/package/lens-aeson">lens-aeson</a> 套件，原生是不支援的。</p>
-<h3 id="套件管理">套件管理</h3>
-<p>Haskell 的套件管理工具有 cabal 和 stack，感覺有點像 pip 和 poetry，但功能重疊得更多。</p>
-<h3 id="在-github-workflow-裡執行-haskell-程式">在 Github workflow 裡執行 Haskell 程式</h3>
-<p>如果每次在 workflow 裡面跑的時候都要重新 <code>stack build</code> （可以想像就是 <code>make build</code>）的話會花很多時間，實測下來大概需要二十分鐘左右。真的是太久了… 幸好有個專案就是在做 <a href="https://github.com/freckle/stack-action/tree/v5/">stack action</a>，快取做得蠻好的，所以其實只有第一次提交有改到 Haskell code 的改動時會需要去把整包編好，其他時候就直接用快取的執行檔，那這大概一分鐘之內就能做完。</p>
-<h3 id="結論">結論</h3>
-<p>還是用 Python 做這種事情會比較快：</p>
-<ul>
-<li>比較多人用：Discogs 有提供 Python SDK，甚至不用自己解析 API response。</li>
-<li>Github workflow 設定起來比較不麻煩，而且不會需要花老半天編譯</li>
-<li>JSON support</li>
-</ul>
-<p>不過如果你時間很多的話也是個不錯的體驗啦… 所有的程式碼都在 <a href="https://github.com/usefulalgorithm/usefulalgorithm.github.io/tree/main/scripts/pull_album_info">這裡</a>。</p>
     </section>
 </article>
 ]]></summary>
