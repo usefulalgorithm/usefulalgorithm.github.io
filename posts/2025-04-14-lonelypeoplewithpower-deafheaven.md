@@ -2,7 +2,7 @@
 title: Deafheaven - Lonely People With Power
 layout: post
 comments: false
-score: 
+score: 7.3
 released: 2025-03-28
 tags: 2025, music, black metal
 ---

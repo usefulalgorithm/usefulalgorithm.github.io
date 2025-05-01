@@ -2,7 +2,7 @@
 title: Kim Hiorthøy - Ghost Note
 layout: post
 comments: false
-score: 
+score: 8.5
 released: 2025-03-21
 tags: 2025, music, experimental, ambient, minimalism
 ---
