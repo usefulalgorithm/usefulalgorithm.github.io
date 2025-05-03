@@ -7,8 +7,35 @@
         <description><![CDATA[Just a regular good ol fashioned blog feed]]></description>
         <atom:link href="http://usefulalgorithm.github.io/rss.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Tue, 29 Apr 2025 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Sat, 03 May 2025 00:00:00 UT</lastBuildDate>
         <item>
+    <title>fib - Heavy Lifting</title>
+    <link>http://usefulalgorithm.github.io/posts/2025-05-03-fib-heavylifting.html</link>
+    <description><![CDATA[<article>
+    <section class="header">
+        Posted on May  3, 2025
+        
+        <br>
+        
+        Tags: <a title="All pages tagged &#39;2025&#39;." href="/tags/2025.html" rel="tag">2025</a>, <a title="All pages tagged &#39;music&#39;." href="/tags/music.html" rel="tag">music</a>, <a title="All pages tagged &#39;indie rock&#39;." href="/tags/indie%20rock.html" rel="tag">indie rock</a>, <a title="All pages tagged &#39;post-punk&#39;." href="/tags/post-punk.html" rel="tag">post-punk</a>
+        
+    </section>
+    <section>
+        <p><img src="https://f4.bcbits.com/img/a0219849195_16.jpg" /></p>
+<p>有點數學的後龐克 / indie rock，吉他彈得介於在好笑跟奇妙之間，開很大的 chorus 刷一些奇數拍的和弦時讓我想到 King Crimson 有的時候的吉他 tone。除了倒數第三首 “Pictures of You”，越後面的歌就越不怪，但我覺得怪一點的歌都比較好聽。</p>
+<hr />
+<p>Fav tracks: mutual, say, pictures of you</p>
+<p>Score: 7.5/10</p>
+<p>Release date: 2025-04-25</p>
+<p>Labels: Julia’s War Recordings</p>
+    </section>
+</article>
+]]></description>
+    <pubDate>Sat, 03 May 2025 00:00:00 UT</pubDate>
+    <guid>http://usefulalgorithm.github.io/posts/2025-05-03-fib-heavylifting.html</guid>
+    <dc:creator>Tsung-Ju Lii</dc:creator>
+</item>
+<item>
     <title>Fridge - Happiness</title>
     <link>http://usefulalgorithm.github.io/posts/2025-04-29-happiness-fridge.html</link>
     <description><![CDATA[<article>
@@ -259,33 +286,6 @@ Score: 8.1/10</p>
 ]]></description>
     <pubDate>Fri, 18 Apr 2025 00:00:00 UT</pubDate>
     <guid>http://usefulalgorithm.github.io/posts/2025-04-18-romanceintheageofadaptivefeedback-unspecifiedenemies.html</guid>
-    <dc:creator>Tsung-Ju Lii</dc:creator>
-</item>
-<item>
-    <title>Kim Hiorthøy - Ghost Note</title>
-    <link>http://usefulalgorithm.github.io/posts/2025-04-15-ghostnote-kimhiorthoy.html</link>
-    <description><![CDATA[<article>
-    <section class="header">
-        Posted on April 15, 2025
-        
-        <br>
-        
-        Tags: <a title="All pages tagged &#39;2025&#39;." href="/tags/2025.html" rel="tag">2025</a>, <a title="All pages tagged &#39;music&#39;." href="/tags/music.html" rel="tag">music</a>, <a title="All pages tagged &#39;experimental&#39;." href="/tags/experimental.html" rel="tag">experimental</a>, <a title="All pages tagged &#39;ambient&#39;." href="/tags/ambient.html" rel="tag">ambient</a>, <a title="All pages tagged &#39;minimalism&#39;." href="/tags/minimalism.html" rel="tag">minimalism</a>
-        
-    </section>
-    <section>
-        <p><img src="https://i.discogs.com/WfhX9dJ1PqDO3wAt3TkC2h7BgWmLYNNbnr0QnbfuVbM/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTMzNjM1/MTg0LTE3NDQwODgx/ODQtOTQ5MC5qcGVn.jpeg" /></p>
-<p>Boomkat 是說很像 Aphex Twin 在 “Nannou” 裡面的感覺，確實是這樣。有很多很神奇的打擊聲，是在敲金屬製的碗嗎，還是是壞掉的馬林巴琴？還有 release 很短的合成器旋律。優質好音樂。</p>
-<hr />
-<p>Fav tracks: Double Sword, Computer Music, Lost Leave, Yellow Minute</p>
-<p>Score: 8.5/10</p>
-<p>Release date: 2025-03-21</p>
-<p>Labels: blickwinkel</p>
-    </section>
-</article>
-]]></description>
-    <pubDate>Tue, 15 Apr 2025 00:00:00 UT</pubDate>
-    <guid>http://usefulalgorithm.github.io/posts/2025-04-15-ghostnote-kimhiorthoy.html</guid>
     <dc:creator>Tsung-Ju Lii</dc:creator>
 </item>
 
