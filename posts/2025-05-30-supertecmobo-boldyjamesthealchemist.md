@@ -3,7 +3,7 @@ title: Boldy James & The Alchemist - Super Tecmo Bo
 layout: post
 comments: false
 score: 8.5
-released: 2021
+released: 2021-12-14
 tags: 2021, music, jazz rap, gangsta rap
 ---
 
