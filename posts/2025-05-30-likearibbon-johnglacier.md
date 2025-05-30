@@ -2,7 +2,7 @@
 title: John Glacier - Like A Ribbon
 layout: post
 comments: false
-score: 
+score: 8.2
 released: 2025-02-14
 tags: 2025, music, alternative rap, post-punk, art pop
 ---
