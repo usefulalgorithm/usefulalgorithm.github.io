@@ -2,7 +2,7 @@
 title: Fatboi Sharif, Driveby - Let Me Out
 layout: post
 comments: false
-score: 8.4
+score: 7.7
 released: 2025-04-24
 tags: 2025, music, experimental hip-hop, abstract rap
 ---
@@ -15,7 +15,7 @@ tags: 2025, music, experimental hip-hop, abstract rap
 
 Fav tracks: Battlefield Galactica, There's a Poison in the Room, Zeitgeistic Psychosomatic Measurements, Elvira's Wedding Ring, Genocidal Jansport aka Sex, Drugs, & Laser Guns
 
-Score: 8.4/10
+Score: 7.7/10
 
 Release date: 2025-04-24
 
