@@ -7,8 +7,35 @@
         <description><![CDATA[Just a regular good ol fashioned blog feed]]></description>
         <atom:link href="http://usefulalgorithm.github.io/rss.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Sun, 22 Jun 2025 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Mon, 23 Jun 2025 00:00:00 UT</lastBuildDate>
         <item>
+    <title>Facta - GULP</title>
+    <link>http://usefulalgorithm.github.io/posts/2025-06-23-gulp-facta.html</link>
+    <description><![CDATA[<article>
+    <section class="header">
+        Posted on June 23, 2025
+        
+        <br>
+        
+        Tags: <a title="All pages tagged &#39;2025&#39;." href="/tags/2025.html" rel="tag">2025</a>, <a title="All pages tagged &#39;music&#39;." href="/tags/music.html" rel="tag">music</a>, <a title="All pages tagged &#39;techno house&#39;." href="/tags/techno%20house.html" rel="tag">techno house</a>, <a title="All pages tagged &#39;dub techno&#39;." href="/tags/dub%20techno.html" rel="tag">dub techno</a>
+        
+    </section>
+    <section>
+        <p><img src="https://f4.bcbits.com/img/a2125084243_16.jpg" /></p>
+<p>我覺得應該是我自己標準有點變了，現在就會覺得這種雖然氣氛不錯但說實在有點平淡，不太酸也不太實驗性的歐風極簡系 dub techno，不是很耐聽⋯或是適合不用專心的時候聽？但總之就是沒啥亮點。</p>
+<hr />
+<p>Fav tracks: Jets, Laguna</p>
+<p>Score: 6.2/10</p>
+<p>Release date: 2025-06-20</p>
+<p>Labels: Wisdom Teeth</p>
+    </section>
+</article>
+]]></description>
+    <pubDate>Mon, 23 Jun 2025 00:00:00 UT</pubDate>
+    <guid>http://usefulalgorithm.github.io/posts/2025-06-23-gulp-facta.html</guid>
+    <dc:creator>Tsung-Ju Lii</dc:creator>
+</item>
+<item>
     <title>Borez - Borez</title>
     <link>http://usefulalgorithm.github.io/posts/2025-06-22-borez-borez.html</link>
     <description><![CDATA[<article>
@@ -250,33 +277,6 @@
 ]]></description>
     <pubDate>Tue, 10 Jun 2025 00:00:00 UT</pubDate>
     <guid>http://usefulalgorithm.github.io/posts/2025-06-10-totality-naturalinformationsocietybitchinbajas.html</guid>
-    <dc:creator>Tsung-Ju Lii</dc:creator>
-</item>
-<item>
-    <title>Fleshwater - We're Not Here To Be Loved</title>
-    <link>http://usefulalgorithm.github.io/posts/2025-06-05-werenotheretobeloved-fleshwater.html</link>
-    <description><![CDATA[<article>
-    <section class="header">
-        Posted on June  5, 2025
-        
-        <br>
-        
-        Tags: <a title="All pages tagged &#39;2022&#39;." href="/tags/2022.html" rel="tag">2022</a>, <a title="All pages tagged &#39;music&#39;." href="/tags/music.html" rel="tag">music</a>, <a title="All pages tagged &#39;nu-metal&#39;." href="/tags/nu-metal.html" rel="tag">nu-metal</a>, <a title="All pages tagged &#39;alternative metal&#39;." href="/tags/alternative%20metal.html" rel="tag">alternative metal</a>
-        
-    </section>
-    <section>
-        <p><img src="https://i.discogs.com/1xlOa-JkFKGtrxGlm2W1XHKbjDVMOWj0icLjocSOfAE/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTI1MTIz/MzAzLTE3MDY2MzU3/NDMtNjk2MS5qcGVn.jpeg" /></p>
-<p>我知道 Deftones 最近好像又紅起來了，不過好像是很最近的事情？但我是覺得有些東西還是留在過去比較好，想要聽類似的音樂可以聽這個就好，就是個很 modern 、樂器表現很精良的另類金屬，但又有混一些 indie rock 元素在裡頭。</p>
-<hr />
-<p>Fav tracks: Baldpate Driver, The Razor’s Apple, Linda Claire</p>
-<p>Score: 7.7/10</p>
-<p>Release date: 2022</p>
-<p>Labels: Closed Casket Activities</p>
-    </section>
-</article>
-]]></description>
-    <pubDate>Thu, 05 Jun 2025 00:00:00 UT</pubDate>
-    <guid>http://usefulalgorithm.github.io/posts/2025-06-05-werenotheretobeloved-fleshwater.html</guid>
     <dc:creator>Tsung-Ju Lii</dc:creator>
 </item>
 
