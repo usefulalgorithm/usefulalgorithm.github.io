@@ -29,10 +29,11 @@ jobs:
       - name: Send Email
         id: send_email
         run: |
+          TEXT="${{ steps.run.outputs.text }}"
           curl -s --user 'api:${{ secrets.MAILGUN_API_KEY }}' \
           https://api.mailgun.net/v3/${{ secrets.MAILGUN_SERVER }}/messages \
           -F from='Mailgun Sandbox <postmaster@${{ secrets.MAILGUN_SERVER }}>' \
           -F to='Tsung-Ju Lii <usefulalgorithm@gmail.com>' \
           -F subject='Monthly Digest' \
-          -F text='${{ steps.run.outputs.text }}'
+          --data-urlencode text="$TEXT"
 
