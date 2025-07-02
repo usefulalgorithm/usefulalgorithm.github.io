@@ -27,12 +27,12 @@ jobs:
           echo 'EOF' >> $GITHUB_OUTPUT
 
       - name: Send email via Mailgun
-        id: send_email
         run: |
-          TEXT="${{ steps.run.outputs.text }}"
+          echo "${{ steps.run.outputs.text }}" > body.txt
+
           curl -s --user "api:${{ secrets.MAILGUN_API_KEY }}" \
-          https://api.mailgun.net/v3/${{ secrets.MAILGUN_SERVER }}/messages \
-          -F from="Mailgun Sandbox <postmaster@${{ secrets.MAILGUN_SERVER }}>" \
-          -F to="Tsung-Ju Lii <usefulalgorithm@gmail.com>" \
-          -F subject="Monthly Digest" \
-          --data-urlencode text="$TEXT"
+            https://api.mailgun.net/v3/${{ secrets.MAILGUN_SERVER }}/messages \
+            -F from="Mailgun Sandbox <postmaster@${{ secrets.MAILGUN_SERVER }}>" \
+            -F to="Tsung-Ju Lii <usefulalgorithm@gmail.com>" \
+            -F subject="Monthly Digest" \
+            --form text=<body.txt
