@@ -35,4 +35,4 @@ jobs:
             -F from="Mailgun Sandbox <postmaster@${{ secrets.MAILGUN_SERVER }}>" \
             -F to="Tsung-Ju Lii <usefulalgorithm@gmail.com>" \
             -F subject="Monthly Digest" \
-            --form text=<body.txt
+            -F text=@body.txt
