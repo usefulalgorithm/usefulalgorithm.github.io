@@ -3,7 +3,7 @@ title: Fleshwater - We're Not Here To Be Loved
 layout: post
 comments: false
 score: 7.7
-released: 2022
+released: 2022-11-04
 tags: 2022, music, nu-metal, alternative metal
 ---
 
@@ -17,7 +17,7 @@ Fav tracks: Baldpate Driver, The Razor's Apple, Linda Claire
 
 Score: 7.7/10
 
-Release date: 2022
+Release date: 2022-11-04
 
 Labels: Closed Casket Activities
 
