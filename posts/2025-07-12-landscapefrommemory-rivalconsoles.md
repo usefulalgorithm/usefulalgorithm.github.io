@@ -4,7 +4,7 @@ layout: post
 comments: false
 score: 5.7
 released: 2025-07-04
-tags: 2025, music
+tags: 2025, music, minimal techno
 ---
 
 ![](https://i.discogs.com/SpN3Qg5Dh3dkQHjxm0KwOjPA1lCW0rSDYodbDO99zvE/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTM0NDEz/ODE0LTE3NTEyOTk1/MDQtNTk3My5qcGVn.jpeg)
