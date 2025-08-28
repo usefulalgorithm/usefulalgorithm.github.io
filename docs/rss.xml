@@ -7,8 +7,35 @@
         <description><![CDATA[Just a regular good ol fashioned blog feed]]></description>
         <atom:link href="http://usefulalgorithm.github.io/rss.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Wed, 27 Aug 2025 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Thu, 28 Aug 2025 00:00:00 UT</lastBuildDate>
         <item>
+    <title>Kourosh Kanani - Aysan</title>
+    <link>http://usefulalgorithm.github.io/posts/2025-08-28-aysen-kouroshkanani.html</link>
+    <description><![CDATA[<article>
+    <section class="header">
+        Posted on August 28, 2025
+        
+        <br>
+        
+        Tags: <a title="All pages tagged &#39;2022&#39;." href="/tags/2022.html" rel="tag">2022</a>, <a title="All pages tagged &#39;music&#39;." href="/tags/music.html" rel="tag">music</a>, <a title="All pages tagged &#39;modern jazz&#39;." href="/tags/modern%20jazz.html" rel="tag">modern jazz</a>, <a title="All pages tagged &#39;Persian folk&#39;." href="/tags/Persian%20folk.html" rel="tag">Persian folk</a>
+        
+    </section>
+    <section>
+        <p><img src="https://f4.bcbits.com/img/a1523433853_16.jpg" /></p>
+<p>我是看到今年 live coding festival 有邀他才知道的。第一首 “Aysan” 的 main riff 非常的狂，老婆說似乎也可以想像我會編類似的東西，中間突然變慢也是緊到爆。不過接下來的歌我覺得都比較還好一些，但現場應該很強。</p>
+<hr />
+<p>Fav tracks: Aysan, Bedioor (Persian Folk Song), Komitas</p>
+<p>Score: 7.2/10</p>
+<p>Release date: 2022-03-01</p>
+<p>Labels: Self-released</p>
+    </section>
+</article>
+]]></description>
+    <pubDate>Thu, 28 Aug 2025 00:00:00 UT</pubDate>
+    <guid>http://usefulalgorithm.github.io/posts/2025-08-28-aysen-kouroshkanani.html</guid>
+    <dc:creator>Tsung-Ju Lii</dc:creator>
+</item>
+<item>
     <title>Deftones - Private Music</title>
     <link>http://usefulalgorithm.github.io/posts/2025-08-27-privatemusic-deftones.html</link>
     <description><![CDATA[<article>
@@ -250,33 +277,6 @@
 ]]></description>
     <pubDate>Thu, 31 Jul 2025 00:00:00 UT</pubDate>
     <guid>http://usefulalgorithm.github.io/posts/2025-07-31-tranzkript1-actress.html</guid>
-    <dc:creator>Tsung-Ju Lii</dc:creator>
-</item>
-<item>
-    <title>Jasmine Guffond - Muzak For The Encouragement Of Unproductivity</title>
-    <link>http://usefulalgorithm.github.io/posts/2025-07-31-muzakfortheencouragementofunproductivity-jasmineguffond.html</link>
-    <description><![CDATA[<article>
-    <section class="header">
-        Posted on July 31, 2025
-        
-        <br>
-        
-        Tags: <a title="All pages tagged &#39;2025&#39;." href="/tags/2025.html" rel="tag">2025</a>, <a title="All pages tagged &#39;music&#39;." href="/tags/music.html" rel="tag">music</a>, <a title="All pages tagged &#39;ambient&#39;." href="/tags/ambient.html" rel="tag">ambient</a>, <a title="All pages tagged &#39;minimalism&#39;." href="/tags/minimalism.html" rel="tag">minimalism</a>
-        
-    </section>
-    <section>
-        <p><img src="https://i.discogs.com/fqtV84SVE_6kLysi-AnVziybtBRSKKG9DP9JwSFRuDk/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTM0NjM1/OTU1LTE3NTM0MzM0/MjYtNzY4NS5qcGVn.jpeg" /></p>
-<p>洗滌人心。極為緩慢的小喇叭、低音號跟單簧管，裹上很厚的 reverb 且彼此交疊著。確實是 for the encouragement of unproductivity，好聽到實在沒法邊聽邊工作。</p>
-<hr />
-<p>Fav tracks: 全部</p>
-<p>Score: 8.6/10</p>
-<p>Release date: 2025-06-27</p>
-<p>Labels: Line</p>
-    </section>
-</article>
-]]></description>
-    <pubDate>Thu, 31 Jul 2025 00:00:00 UT</pubDate>
-    <guid>http://usefulalgorithm.github.io/posts/2025-07-31-muzakfortheencouragementofunproductivity-jasmineguffond.html</guid>
     <dc:creator>Tsung-Ju Lii</dc:creator>
 </item>
 
