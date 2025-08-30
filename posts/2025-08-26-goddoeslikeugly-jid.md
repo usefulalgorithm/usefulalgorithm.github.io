@@ -1,5 +1,5 @@
 ---
-title: JUD - God Does Like Ugly
+title: JID - God Does Like Ugly
 layout: post
 comments: false
 score: 6.2
