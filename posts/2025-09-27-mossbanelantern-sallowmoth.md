@@ -3,7 +3,7 @@ title: Sallow Moth - Mossbane Lantern
 layout: post
 comments: false
 score: 8.3
-released: 2025
+released: 2025-08-01
 tags: 2025, music, progressive death metal
 ---
 
@@ -17,7 +17,7 @@ Fav tracks: Cauldron Brim Neurosilk, Psionic Battery
 
 Score: 8.3/10
 
-Release date: 2025
+Release date: 2025-08-01
 
 Labels: I, Voidhanger Records
 
