@@ -7,8 +7,35 @@
         <description><![CDATA[Just a regular good ol fashioned blog feed]]></description>
         <atom:link href="http://usefulalgorithm.github.io/rss.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Fri, 14 Nov 2025 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Tue, 18 Nov 2025 00:00:00 UT</lastBuildDate>
         <item>
+    <title>Basic Unit - Redux</title>
+    <link>http://usefulalgorithm.github.io/posts/2025-11-18-redux-basicunit.html</link>
+    <description><![CDATA[<article>
+    <section class="header">
+        Posted on November 18, 2025
+        
+        <br>
+        
+        Tags: <a title="All pages tagged &#39;2025&#39;." href="/tags/2025.html" rel="tag">2025</a>, <a title="All pages tagged &#39;music&#39;." href="/tags/music.html" rel="tag">music</a>, <a title="All pages tagged &#39;jungle&#39;." href="/tags/jungle.html" rel="tag">jungle</a>, <a title="All pages tagged &#39;techno&#39;." href="/tags/techno.html" rel="tag">techno</a>
+        
+    </section>
+    <section>
+        <p><img src="https://i.discogs.com/GsVtTEhgXNxjP9eEa1FoLsUA4zFKIFXD8VSshiXWVoA/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTM1Njky/OTEyLTE3NjM0MTcz/ODMtMzE3MS5qcGVn.jpeg" /></p>
+<p>壓抑感跟低頻都拉滿的 jungle ，詭譎感之外也有很多做得很稀疏的地方，更加突出了大小鼓的聲音，非常帶勁。說是一張 24 分鐘的單曲我覺得也無不可。昨天老婆也是在看一個關於 jungle 音樂家的紀錄片，據說就是自己拍自己，他聽到很 sen 。只能說真是兩樣情⋯</p>
+<hr />
+<p>Fav tracks: Perimeter, Threshold, Rift</p>
+<p>Score: 8.2/10</p>
+<p>Release date: 2025-11-14</p>
+<p>Labels: Blank Comms</p>
+    </section>
+</article>
+]]></description>
+    <pubDate>Tue, 18 Nov 2025 00:00:00 UT</pubDate>
+    <guid>http://usefulalgorithm.github.io/posts/2025-11-18-redux-basicunit.html</guid>
+    <dc:creator>Tsung-Ju Lii</dc:creator>
+</item>
+<item>
     <title>Nala Sinephro - The Smashin Machine OST</title>
     <link>http://usefulalgorithm.github.io/posts/2025-11-14-thesmashingmachine-nalasinephro.html</link>
     <description><![CDATA[<article>
@@ -253,33 +280,6 @@
 ]]></description>
     <pubDate>Wed, 22 Oct 2025 00:00:00 UT</pubDate>
     <guid>http://usefulalgorithm.github.io/posts/2025-10-22-thespiritualsound-agriculture.html</guid>
-    <dc:creator>Tsung-Ju Lii</dc:creator>
-</item>
-<item>
-    <title>f5ve - Sequence 01</title>
-    <link>http://usefulalgorithm.github.io/posts/2025-10-22-sequence01-f5ve.html</link>
-    <description><![CDATA[<article>
-    <section class="header">
-        Posted on October 22, 2025
-        
-        <br>
-        
-        Tags: <a title="All pages tagged &#39;2025&#39;." href="/tags/2025.html" rel="tag">2025</a>, <a title="All pages tagged &#39;music&#39;." href="/tags/music.html" rel="tag">music</a>, <a title="All pages tagged &#39;j-pop&#39;." href="/tags/j-pop.html" rel="tag">j-pop</a>
-        
-    </section>
-    <section>
-        <p><img src="https://i.discogs.com/ysuDA8FB7e70BlSmYknRNRtIdIFqgYXUEyF4oo2Svrw/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTMzODkz/NzAwLTE3NDY0MTU5/MzUtOTY2OC5qcGVn.jpeg" /></p>
-<p>千禧年感滿滿當當的日本女團。這種很兩千年的音樂現在是大勢，但我覺得實際上要做得雋永耐聽是很困難的，而我聽過的絕大多數也確實是不怎麼咬耳朵。這張是有做出那種調調，但真的讓我覺得算蠻酷的歌，卻也都不夠長，整首歌都是重點也就代表其實沒有重點，是很可惜的地方。</p>
-<hr />
-<p>Fav tracks: Lettuce, Real Girl</p>
-<p>Score: 6.7/10</p>
-<p>Release date: 2025-05-05</p>
-<p>Labels: LDH Records</p>
-    </section>
-</article>
-]]></description>
-    <pubDate>Wed, 22 Oct 2025 00:00:00 UT</pubDate>
-    <guid>http://usefulalgorithm.github.io/posts/2025-10-22-sequence01-f5ve.html</guid>
     <dc:creator>Tsung-Ju Lii</dc:creator>
 </item>
 
