@@ -1,5 +1,5 @@
 ---
-title: WestsideGunn - Supreme Blientele
+title: Westside Gunn - Supreme Blientele
 layout: post
 comments: false
 score: 6.7
