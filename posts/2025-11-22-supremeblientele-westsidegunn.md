@@ -4,7 +4,7 @@ layout: post
 comments: false
 score: 6.7
 released: 2018-06-22
-tags: 2018, music, boom nap, hardcore rap
+tags: 2018, music, boom bap, hardcore rap
 ---
 
 ![](https://i.discogs.com/0mDu9rYvvqHZOM5tB8QaIpDxlmfrvWj7DtoFDMAxRHI/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTEyMTkz/MTc3LTE1MzAxODE3/NjQtMjQzMS5qcGVn.jpeg)
