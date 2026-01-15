@@ -7,8 +7,35 @@
         <description><![CDATA[Just a regular good ol fashioned blog feed]]></description>
         <atom:link href="http://usefulalgorithm.github.io/rss.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Thu, 08 Jan 2026 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Thu, 15 Jan 2026 00:00:00 UT</lastBuildDate>
         <item>
+    <title>Piotr Kurek - Songs And Bodies</title>
+    <link>http://usefulalgorithm.github.io/posts/2026-01-15-songsandbodies-piotrkurek.html</link>
+    <description><![CDATA[<article>
+    <section class="header">
+        Posted on January 15, 2026
+        
+        <br>
+        
+        Tags: <a title="All pages tagged &#39;2025&#39;." href="/tags/2025.html" rel="tag">2025</a>, <a title="All pages tagged &#39;music&#39;." href="/tags/music.html" rel="tag">music</a>, <a title="All pages tagged &#39;jazz&#39;." href="/tags/jazz.html" rel="tag">jazz</a>, <a title="All pages tagged &#39;post-rock&#39;." href="/tags/post-rock.html" rel="tag">post-rock</a>
+        
+    </section>
+    <section>
+        <p><img src="https://f4.bcbits.com/img/a0791659876_16.jpg" /></p>
+<p>我印象中他的上一張作品更破碎、更實驗一點，而這張就是非常悅耳的現代爵士後搖（有這種東西嗎… 像 Gastr del Sol，但更加電子一點。）喜歡 Bark Psychosis 的這張一定會中。</p>
+<hr />
+<p>Fav tracks: It Used To Be a Song, And Yet Through This, Nothing Holds Still, Songs and Bodies, The Water Is Wide</p>
+<p>Score: 8.6/10</p>
+<p>Release date: 2025-09-26</p>
+<p>Labels: Unsound</p>
+    </section>
+</article>
+]]></description>
+    <pubDate>Thu, 15 Jan 2026 00:00:00 UT</pubDate>
+    <guid>http://usefulalgorithm.github.io/posts/2026-01-15-songsandbodies-piotrkurek.html</guid>
+    <dc:creator>Tsung-Ju Lii</dc:creator>
+</item>
+<item>
     <title>Chris Clark - Clarence Park</title>
     <link>http://usefulalgorithm.github.io/posts/2026-01-08-clarencepark-chrisclark.html</link>
     <description><![CDATA[<article>
@@ -253,33 +280,6 @@
 ]]></description>
     <pubDate>Wed, 10 Dec 2025 00:00:00 UT</pubDate>
     <guid>http://usefulalgorithm.github.io/posts/2025-12-10-haywardxdalek-dalekcharleshayward.html</guid>
-    <dc:creator>Tsung-Ju Lii</dc:creator>
-</item>
-<item>
-    <title>Oneohtrix Point Never - Tranquilizer</title>
-    <link>http://usefulalgorithm.github.io/posts/2025-12-06-tranquilizer-oneohtrixpointnever.html</link>
-    <description><![CDATA[<article>
-    <section class="header">
-        Posted on December  6, 2025
-        
-        <br>
-        
-        Tags: <a title="All pages tagged &#39;2025&#39;." href="/tags/2025.html" rel="tag">2025</a>, <a title="All pages tagged &#39;music&#39;." href="/tags/music.html" rel="tag">music</a>, <a title="All pages tagged &#39;electronic&#39;." href="/tags/electronic.html" rel="tag">electronic</a>, <a title="All pages tagged &#39;plunderphonics&#39;." href="/tags/plunderphonics.html" rel="tag">plunderphonics</a>, <a title="All pages tagged &#39;new age&#39;." href="/tags/new%20age.html" rel="tag">new age</a>
-        
-    </section>
-    <section>
-        <p><img src="https://i.discogs.com/Ddw2qG2Gw4as-Wwq0LIo28NS0C9yFIXyfbaUG1Rx2N4/rs:fit/g:sm/q:90/h:596/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTM1Njc2/Njc2LTE3NjM3NDY3/NTItMzQ3NS5qcGVn.jpeg" /></p>
-<p>Rodl Glide: 我看 The Quietus 說這是十年來 OPN 最讚的歌，除了 Replica 跟 Returner 之外沒那麼熟的我好像也沒法說這話是對是錯，但確實最前面是徹頭徹尾的 lo-fi beats 音樂，中間突然鬼轉一個變成合成器 techno。我一直想到 Lisa: The Painful 裡的配樂。</p>
-<hr />
-<p>Fav tracks: Bumpy, Fear of Symmetry, Vestigel, Tranquilizer, Storm Show, Rodl Glide</p>
-<p>Score: 8.4/10</p>
-<p>Release date: 2025-11-21</p>
-<p>Labels: Warp Records</p>
-    </section>
-</article>
-]]></description>
-    <pubDate>Sat, 06 Dec 2025 00:00:00 UT</pubDate>
-    <guid>http://usefulalgorithm.github.io/posts/2025-12-06-tranquilizer-oneohtrixpointnever.html</guid>
     <dc:creator>Tsung-Ju Lii</dc:creator>
 </item>
 
