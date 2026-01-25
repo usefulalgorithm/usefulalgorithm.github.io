@@ -7,8 +7,35 @@
         <description><![CDATA[Just a regular good ol fashioned blog feed]]></description>
         <atom:link href="http://usefulalgorithm.github.io/rss.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Thu, 22 Jan 2026 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Sun, 25 Jan 2026 00:00:00 UT</lastBuildDate>
         <item>
+    <title>Joey -  Ten Sixty</title>
+    <link>http://usefulalgorithm.github.io/posts/2026-01-25-tensixty-joey.html</link>
+    <description><![CDATA[<article>
+    <section class="header">
+        Posted on January 25, 2026
+        
+        <br>
+        
+        Tags: <a title="All pages tagged &#39;2024&#39;." href="/tags/2024.html" rel="tag">2024</a>, <a title="All pages tagged &#39;music&#39;." href="/tags/music.html" rel="tag">music</a>, <a title="All pages tagged &#39;drum &amp; bass&#39;." href="/tags/drum%20%26%20bass.html" rel="tag">drum &amp; bass</a>, <a title="All pages tagged &#39;techno&#39;." href="/tags/techno.html" rel="tag">techno</a>
+        
+    </section>
+    <section>
+        <p><img src="https://f4.bcbits.com/img/a4205680261_16.jpg" /></p>
+<p>很爽的 drum &amp; bass，四處蔓延的貝斯低音、純正又到位的 jungle beat，整體的聲音又做得詭譎。是聽了會很 turn 的一張佳作。</p>
+<hr />
+<p>Fav tracks: Inpression, In For A Dime, Rendr, Hand It Over</p>
+<p>Score: 8.3/10</p>
+<p>Release date: 2024-06-28</p>
+<p>Labels: Elicit Records</p>
+    </section>
+</article>
+]]></description>
+    <pubDate>Sun, 25 Jan 2026 00:00:00 UT</pubDate>
+    <guid>http://usefulalgorithm.github.io/posts/2026-01-25-tensixty-joey.html</guid>
+    <dc:creator>Tsung-Ju Lii</dc:creator>
+</item>
+<item>
     <title>No Sir - Decoys</title>
     <link>http://usefulalgorithm.github.io/posts/2026-01-22-decoys-nosir.html</link>
     <description><![CDATA[<article>
@@ -249,33 +276,6 @@
 ]]></description>
     <pubDate>Sat, 27 Dec 2025 00:00:00 UT</pubDate>
     <guid>http://usefulalgorithm.github.io/posts/2025-12-27-hookeslaw-keiyaa.html</guid>
-    <dc:creator>Tsung-Ju Lii</dc:creator>
-</item>
-<item>
-    <title>feeo - Goodness</title>
-    <link>http://usefulalgorithm.github.io/posts/2025-12-23-goodness-feeo.html</link>
-    <description><![CDATA[<article>
-    <section class="header">
-        Posted on December 23, 2025
-        
-        <br>
-        
-        Tags: <a title="All pages tagged &#39;2025&#39;." href="/tags/2025.html" rel="tag">2025</a>, <a title="All pages tagged &#39;music&#39;." href="/tags/music.html" rel="tag">music</a>, <a title="All pages tagged &#39;experimental pop&#39;." href="/tags/experimental%20pop.html" rel="tag">experimental pop</a>, <a title="All pages tagged &#39;ambient&#39;." href="/tags/ambient.html" rel="tag">ambient</a>
-        
-    </section>
-    <section>
-        <p><img src="https://i.discogs.com/8Hi76QHlh5CuRzgZFygjjfywPNF694fmdT3uXe-jqJU/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTM1MzMy/ODk0LTE3NjAwNzAx/NjEtNzE0MS5qcGVn.jpeg" /></p>
-<p>極簡風的實驗流行（實驗跟流行好像蠻衝突的？但這是我能想到最符合他的類型了⋯）同時帶有一些 drone / ambient 的基調，是今年底聽到很酷的作品之一。</p>
-<hr />
-<p>Fav tracks: The Mountain, Requiem, Win!, The Hammer Strikes the Ball, Night Forgives Those Black As Her</p>
-<p>Score: 8.5/10</p>
-<p>Release date: 2025-10-10</p>
-<p>Labels: AD 93</p>
-    </section>
-</article>
-]]></description>
-    <pubDate>Tue, 23 Dec 2025 00:00:00 UT</pubDate>
-    <guid>http://usefulalgorithm.github.io/posts/2025-12-23-goodness-feeo.html</guid>
     <dc:creator>Tsung-Ju Lii</dc:creator>
 </item>
 
