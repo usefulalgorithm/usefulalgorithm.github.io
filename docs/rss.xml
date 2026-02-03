@@ -7,8 +7,35 @@
         <description><![CDATA[Just a regular good ol fashioned blog feed]]></description>
         <atom:link href="http://usefulalgorithm.github.io/rss.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Sun, 01 Feb 2026 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Tue, 03 Feb 2026 00:00:00 UT</lastBuildDate>
         <item>
+    <title>Michel Banabila - Through Global Frequency</title>
+    <link>http://usefulalgorithm.github.io/posts/2026-02-03-throughglobalfrequency-michelbanabila.html</link>
+    <description><![CDATA[<article>
+    <section class="header">
+        Posted on February  3, 2026
+        
+        <br>
+        
+        Tags: <a title="All pages tagged &#39;2026&#39;." href="/tags/2026.html" rel="tag">2026</a>, <a title="All pages tagged &#39;music&#39;." href="/tags/music.html" rel="tag">music</a>, <a title="All pages tagged &#39;ambient&#39;." href="/tags/ambient.html" rel="tag">ambient</a>, <a title="All pages tagged &#39;new age&#39;." href="/tags/new%20age.html" rel="tag">new age</a>, <a title="All pages tagged &#39;spoken word&#39;." href="/tags/spoken%20word.html" rel="tag">spoken word</a>
+        
+    </section>
+    <section>
+        <p><img src="https://i.discogs.com/p5O_DTHW5fii34iQ096S5G6q5Uc6VIkphF1x_9-8fWQ/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTM2MjE5/MzI1LTE3Njg0ODI4/MTAtNDgxMy5qcGVn.jpeg" /></p>
+<p>這確實是 global ，裡面唸詩唸字的語言都不一樣。一開始以為是比較工業的 ambient，但到後面的歌就更多地選了比較常聽到的音色跟和弦，變得有點 new age 了。普普通通吧，如果專輯內頁有寫他們唸的詩，然後我有買專輯的話，可能會比較有感覺吧⋯</p>
+<hr />
+<p>Fav tracks: Through Global Frequency 1, Through Global Frequency 6</p>
+<p>Score: 6.1/10</p>
+<p>Release date: 2026-01-30</p>
+<p>Labels: 12th Isle</p>
+    </section>
+</article>
+]]></description>
+    <pubDate>Tue, 03 Feb 2026 00:00:00 UT</pubDate>
+    <guid>http://usefulalgorithm.github.io/posts/2026-02-03-throughglobalfrequency-michelbanabila.html</guid>
+    <dc:creator>Tsung-Ju Lii</dc:creator>
+</item>
+<item>
     <title>The Humble Bee - morning music</title>
     <link>http://usefulalgorithm.github.io/posts/2026-02-01-thehumblebee-morningmusic.html</link>
     <description><![CDATA[<article>
@@ -249,33 +276,6 @@
 ]]></description>
     <pubDate>Tue, 06 Jan 2026 00:00:00 UT</pubDate>
     <guid>http://usefulalgorithm.github.io/posts/2026-01-06-nocturne-onmutumechanicks.html</guid>
-    <dc:creator>Tsung-Ju Lii</dc:creator>
-</item>
-<item>
-    <title>Ulla Straus - Hometown Girl</title>
-    <link>http://usefulalgorithm.github.io/posts/2025-12-31-hometowngirl-ulla.html</link>
-    <description><![CDATA[<article>
-    <section class="header">
-        Posted on December 31, 2025
-        
-        <br>
-        
-        Tags: <a title="All pages tagged &#39;2025&#39;." href="/tags/2025.html" rel="tag">2025</a>, <a title="All pages tagged &#39;music&#39;." href="/tags/music.html" rel="tag">music</a>, <a title="All pages tagged &#39;ambient&#39;." href="/tags/ambient.html" rel="tag">ambient</a>, <a title="All pages tagged &#39;field recording&#39;." href="/tags/field%20recording.html" rel="tag">field recording</a>, <a title="All pages tagged &#39;indie folk&#39;." href="/tags/indie%20folk.html" rel="tag">indie folk</a>
-        
-    </section>
-    <section>
-        <p><img src="https://i.discogs.com/zHnV1g1SNjqtQpodwtykKx1suxFT6nmOPOzUXFcR9VA/rs:fit/g:sm/q:90/h:584/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTMzMDAz/NTQzLTE3MzkwNTcy/NjctODc3Mi5qcGVn.jpeg" /></p>
-<p>極簡風 ambient / field recording。總比我印象中少了些電子質感，聲音也比之前的作品來得斷裂。有些吉他錄得破破的，有一點點（就一點點）像 Claire rousay？這張專輯也嘗試了不少之前沒聽 Ulla 做過的音樂風格，效果也都不錯：第二首歌 Lavender (NF) 是緩慢而悠然的爵士樂；Gecko 是錄得糊糊的（但蠻好聽的）臥室民謠；Ball 則是 IDM 感十足，碎碎的音樂盒旋律。</p>
-<hr />
-<p>Fav tracks: Good Morning, Lavender (NF), Drain the house, Little Window, Night Loop, Long Dust, Drawing of Me</p>
-<p>Score: 8.2/10</p>
-<p>Release date: 2025-01-10</p>
-<p>Labels: 28912</p>
-    </section>
-</article>
-]]></description>
-    <pubDate>Wed, 31 Dec 2025 00:00:00 UT</pubDate>
-    <guid>http://usefulalgorithm.github.io/posts/2025-12-31-hometowngirl-ulla.html</guid>
     <dc:creator>Tsung-Ju Lii</dc:creator>
 </item>
 
