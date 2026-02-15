@@ -7,8 +7,35 @@
         <description><![CDATA[Just a regular good ol fashioned blog feed]]></description>
         <atom:link href="http://usefulalgorithm.github.io/rss.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Sat, 14 Feb 2026 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Sun, 15 Feb 2026 00:00:00 UT</lastBuildDate>
         <item>
+    <title>Masahiro Sugaya - 海の動物園</title>
+    <link>http://usefulalgorithm.github.io/posts/2026-02-15-thelonglivingthings-masahirosugaya.html</link>
+    <description><![CDATA[<article>
+    <section class="header">
+        Posted on February 15, 2026
+        
+        <br>
+        
+        Tags: <a title="All pages tagged &#39;1988&#39;." href="/tags/1988.html" rel="tag">1988</a>, <a title="All pages tagged &#39;music&#39;." href="/tags/music.html" rel="tag">music</a>, <a title="All pages tagged &#39;ambient&#39;." href="/tags/ambient.html" rel="tag">ambient</a>, <a title="All pages tagged &#39;new age&#39;." href="/tags/new%20age.html" rel="tag">new age</a>
+        
+    </section>
+    <section>
+        <p><img src="https://meditations.jp/cdn/shop/files/pcd27084_1000x.jpg?v=1718868244" /></p>
+<p>這是他幫 Pappa TARAHUMARA 舞團的舞台劇做的配樂，據說舞步跟音樂是可以搭得起來的，很難想像這麼平靜的新世紀音樂要怎麼樣配上舞步…</p>
+<hr />
+<p>Fav tracks: 帽子とマンドリン, 世界の果てまで</p>
+<p>Score: 6.8/10</p>
+<p>Release date: 1988-01-01</p>
+<p>Labels: ALM Records</p>
+    </section>
+</article>
+]]></description>
+    <pubDate>Sun, 15 Feb 2026 00:00:00 UT</pubDate>
+    <guid>http://usefulalgorithm.github.io/posts/2026-02-15-thelonglivingthings-masahirosugaya.html</guid>
+    <dc:creator>Tsung-Ju Lii</dc:creator>
+</item>
+<item>
     <title>Cryptic Shift - Visitations From Enceladus</title>
     <link>http://usefulalgorithm.github.io/posts/2026-02-14-visitationsfromenceladus-crypticshift.html</link>
     <description><![CDATA[<article>
@@ -250,33 +277,6 @@
 ]]></description>
     <pubDate>Sun, 25 Jan 2026 00:00:00 UT</pubDate>
     <guid>http://usefulalgorithm.github.io/posts/2026-01-25-fobia-aylu.html</guid>
-    <dc:creator>Tsung-Ju Lii</dc:creator>
-</item>
-<item>
-    <title>No Sir - Decoys</title>
-    <link>http://usefulalgorithm.github.io/posts/2026-01-22-decoys-nosir.html</link>
-    <description><![CDATA[<article>
-    <section class="header">
-        Posted on January 22, 2026
-        
-        <br>
-        
-        Tags: <a title="All pages tagged &#39;2025&#39;." href="/tags/2025.html" rel="tag">2025</a>, <a title="All pages tagged &#39;music&#39;." href="/tags/music.html" rel="tag">music</a>, <a title="All pages tagged &#39;techno&#39;." href="/tags/techno.html" rel="tag">techno</a>, <a title="All pages tagged &#39;dubstep&#39;." href="/tags/dubstep.html" rel="tag">dubstep</a>
-        
-    </section>
-    <section>
-        <p><img src="https://f4.bcbits.com/img/a0668565011_16.jpg" /></p>
-<p>緊 / ㄍㄧㄥ 到不行的電子音樂，有蠻多 dubstep 感很強的 LFO pulse，但是整體做得非常壓抑，也融合了很多工業感音色。整張聽下來非常爽，可惜就是有點短。</p>
-<hr />
-<p>Fav tracks: Imitation Body, Fear of Others, Respite</p>
-<p>Score: 8.2/10</p>
-<p>Release date: 2025-02-28</p>
-<p>Labels: De la… je l’espère</p>
-    </section>
-</article>
-]]></description>
-    <pubDate>Thu, 22 Jan 2026 00:00:00 UT</pubDate>
-    <guid>http://usefulalgorithm.github.io/posts/2026-01-22-decoys-nosir.html</guid>
     <dc:creator>Tsung-Ju Lii</dc:creator>
 </item>
 
