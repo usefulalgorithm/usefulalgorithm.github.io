@@ -2,7 +2,7 @@
 title: Kara-Lis Coverdale - Changes In Air
 layout: post
 comments: false
-score: 
+score: 8.3
 released: 2025-11-21
 tags: 2025, music, ambient
 ---
@@ -20,4 +20,5 @@ Score: 8.3/10
 Release date: 2025-11-21
 
 Labels: Smalltown Supersound
+
 
