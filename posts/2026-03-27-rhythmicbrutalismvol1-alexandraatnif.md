@@ -9,7 +9,7 @@ tags: 2017, music, industrial techno
 
 ![](https://i.discogs.com/K0-nDn8OzEYVnPKzFBBJvlVgIbWWX_7Vly0hx9yR6B0/rs:fit/g:sm/q:90/h:515/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTkyNDk4/ODYtMTQ3NzM1Nzg2/My0zNzA5LmpwZWc.jpeg)
 
-有點像 Pan Sonic，但又更 techno 一點。我好像買到特別版的，又是一張在 RECOfan 撈到的屌貨。
+有點像 Pan Sonic，但又更 techno 一點。我好像買到特別版的，又是一張在 Amoeba Music 撈到的屌貨，才 9 美金。
 
 ---
 
