@@ -2,9 +2,9 @@
 title: Maruja - Pain To Power
 layout: post
 comments: false
-score: alternative rock, post-punk, rap rock, post-hardcore
+score: 7.0
 released: 2025-09-12
-tags: 2025, music
+tags: 2025, music, alternative rock, post-punk, rap rock, post-hardcore
 ---
 
 ![](https://i.discogs.com/VMagyhORA824-WRAvZDxOEmHHLMuNFxTICxPok2yaSQ/rs:fit/g:sm/q:90/h:577/w:599/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTM1MDgw/NjI1LTE3NTc2OTMw/NDktNDY5MC5qcGVn.jpeg)
