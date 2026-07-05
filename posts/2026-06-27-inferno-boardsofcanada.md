@@ -1,5 +1,5 @@
 ---
-title: Boards of Canada - Inerno
+title: Boards of Canada - Inferno
 layout: post
 comments: false
 score: 7.0
