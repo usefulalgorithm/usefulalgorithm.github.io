@@ -7,8 +7,35 @@
         <description><![CDATA[Just a regular good ol fashioned blog feed]]></description>
         <atom:link href="http://usefulalgorithm.github.io/rss.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Wed, 08 Jul 2026 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Fri, 10 Jul 2026 00:00:00 UT</lastBuildDate>
         <item>
+    <title>helllhound - Here In The Valley</title>
+    <link>http://usefulalgorithm.github.io/posts/2026-07-10-hereinthevalley-helllhound.html</link>
+    <description><![CDATA[<article>
+    <section class="header">
+        Posted on July 10, 2026
+        
+        <br>
+        
+        Tags: <a title="All pages tagged &#39;2026&#39;." href="/tags/2026.html" rel="tag">2026</a>, <a title="All pages tagged &#39;music&#39;." href="/tags/music.html" rel="tag">music</a>, <a title="All pages tagged &#39;ethereal folk&#39;." href="/tags/ethereal%20folk.html" rel="tag">ethereal folk</a>
+        
+    </section>
+    <section>
+        <p><img src="https://f4.bcbits.com/img/a3172623209_10.jpg" /></p>
+<p>夢幻的低傳真民謠。這張專輯是他們兩個從洛杉磯搬到塞拉國家森林之後做的，聽起來覺得好像有點樹木散發的濕氣跟透過葉片灑下來的太陽光的感覺。</p>
+<hr />
+<p>Fav tracks: there, wood nymph, venus in libra, lullaby</p>
+<p>Score: 8.1/10</p>
+<p>Release date: 2026-04-24</p>
+<p>Labels: Constellation Tatsu</p>
+    </section>
+</article>
+]]></description>
+    <pubDate>Fri, 10 Jul 2026 00:00:00 UT</pubDate>
+    <guid>http://usefulalgorithm.github.io/posts/2026-07-10-hereinthevalley-helllhound.html</guid>
+    <dc:creator>Tsung-Ju Lii</dc:creator>
+</item>
+<item>
     <title>Marc Leclair - Musique Pour 3 Femmes Enceintes</title>
     <link>http://usefulalgorithm.github.io/posts/2026-07-08-musiquepour3femmesenceintes-marcleclair.html</link>
     <description><![CDATA[<article>
@@ -251,34 +278,6 @@
 ]]></description>
     <pubDate>Thu, 25 Jun 2026 00:00:00 UT</pubDate>
     <guid>http://usefulalgorithm.github.io/posts/2026-06-25-demandtobetakentoheavenalive-horselords.html</guid>
-    <dc:creator>Tsung-Ju Lii</dc:creator>
-</item>
-<item>
-    <title>Chalk Hands - The Line That Shapes The Coast Of Us</title>
-    <link>http://usefulalgorithm.github.io/posts/2026-06-23-thelinethatshapesthecoastofus-chalkhands.html</link>
-    <description><![CDATA[<article>
-    <section class="header">
-        Posted on June 23, 2026
-        
-        <br>
-        
-        Tags: <a title="All pages tagged &#39;2026&#39;." href="/tags/2026.html" rel="tag">2026</a>, <a title="All pages tagged &#39;music&#39;." href="/tags/music.html" rel="tag">music</a>, <a title="All pages tagged &#39;post-rock&#39;." href="/tags/post-rock.html" rel="tag">post-rock</a>, <a title="All pages tagged &#39;screamo&#39;." href="/tags/screamo.html" rel="tag">screamo</a>, <a title="All pages tagged &#39;math rock&#39;." href="/tags/math%20rock.html" rel="tag">math rock</a>
-        
-    </section>
-    <section>
-        <p><img src="https://f4.bcbits.com/img/a1132637153_10.jpg" /></p>
-<p>有些地方有很中西部 emo / math rock 的快速吉他旋律，也有很後搖的鋪陳，也有指彈木吉他彈一些很 emo (此指情緒非指樂風) 的東西。元素集得很齊，演奏上也很紮實，但我覺得歌聽起來都飄飄的，要很重的地方重不起來，要寫一些敘事感比較強的歌但好像內容又延續得不夠久，才剛開始變得有點意思就進到下一段了。一個太想彈吉他、想塞太多東西的感覺。</p>
-<p>（老實說我覺得很多只用 telecaster 然後玩這種樂風的團，好像都給我這種感覺…… 像是近十年的 envy 之類的……）</p>
-<hr />
-<p>Fav tracks: Day Glow, Your Skin is Gold</p>
-<p>Score: 6.8/10</p>
-<p>Release date: 2026-03-27</p>
-<p>Labels: Dog Knights Productions</p>
-    </section>
-</article>
-]]></description>
-    <pubDate>Tue, 23 Jun 2026 00:00:00 UT</pubDate>
-    <guid>http://usefulalgorithm.github.io/posts/2026-06-23-thelinethatshapesthecoastofus-chalkhands.html</guid>
     <dc:creator>Tsung-Ju Lii</dc:creator>
 </item>
 
