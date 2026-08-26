@@ -15,7 +15,7 @@ tags: 2026, music, black metal, experimental rock, post-metal
 - Liturgy：之前有跟 Haela Hunt-Hendrix 表演過，表演完去吃建宏牛肉麵，後來想想有點可惜，應該要建議大家把那一排牛肉麵全部吃過一輪然後評鑑一下哪家才是天下第一劍。
 - Krallice：他們算 hipster 嗎？？但印象中有被罵到。
  
-其實都混得還不錯，也都是我很喜歡的樂團。另外還有就是 Bosse-De-Nage，上次他們發專輯也是好幾年前的 _All Fours_，非常好聽。早期的音樂比較有些 math rock 、hardcore 的影子在，但漸漸地也融入了一些 blackgaze 元素。
+其實都混得還不錯，也都是我很喜歡的樂團。另外還有就是 Bosse-De-Nage，上次他們發專輯也是好幾年前的 _Further Still_，非常好聽。早期的音樂比較有些 math rock 、hardcore 的影子在，但漸漸地也融入了一些 blackgaze 元素。
 
 說實驗性，他們好像也沒有同樣是給 The Flenser 發行的 Mamaleek 來得奇怪，但卻也不能說他們就不是個充滿實驗精神的樂團：今年這張用了很多的 clean tone、大量的大和弦，但聽起來卻不是像 Deafheaven 那種後搖感十足、洗滌人心的大爆炸，而反倒更增加了音樂的詭異感，讓人坐不住。
 
